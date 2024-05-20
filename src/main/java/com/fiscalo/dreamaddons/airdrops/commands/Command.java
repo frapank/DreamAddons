@@ -24,7 +24,7 @@ public class Command implements CommandExecutor {
         if(sender instanceof Player){
 
             Player player = (Player) sender;
-            if(player.hasPermission("airdrop.staff")){
+            if(player.hasPermission("dream.admin")){
                 switch(args.length){
                     case 1:
                         one(args, player);

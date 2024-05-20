@@ -45,7 +45,7 @@ public class FragmentListener implements Listener {
         if (block.equals(Material.SKULL_ITEM)) {
             fragmentManager.addFragments(player, player.getItemInHand().getAmount());
             player.getInventory().removeItem(player.getItemInHand());
-            if(!player.hasPermission("dreamaddons.placefragment")){
+            if(!player.hasPermission("ddream.placefragments")){
                 event.setCancelled(true);
             }
         }
