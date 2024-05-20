@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -40,32 +41,11 @@ public class FragmentListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        ItemStack item = event.getItemInHand();
-
-        if (item != null && item.hasItemMeta()) {
-            plugin.getLogger().info("Entrato nell'if1");
-            ItemMeta itemMeta = item.getItemMeta();
-            String itemDisplayName = itemMeta.getDisplayName();
-            List<String> itemLore = itemMeta.getLore();
-
-            plugin.getLogger().info("itemDisplayName: " + itemDisplayName);
-            plugin.getLogger().info("itemLore: " + itemLore);
-
-            String configDisplayName = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fragments.display-name"));
-            List<String> configLore = plugin.getConfig().getStringList("fragments.lore");
-            for (int i = 0; i < configLore.size(); i++) {
-                configLore.set(i, ChatColor.translateAlternateColorCodes('&', configLore.get(i)));
-            }
-
-            plugin.getLogger().info("configDisplayName: " + configDisplayName);
-            plugin.getLogger().info("configLore: " + configLore);
-
-            if (configDisplayName.equals(itemDisplayName) && configLore.equals(itemLore)) {
-                plugin.getLogger().info("entrato nell'if2");
-                int amount = item.getAmount();
-                fragmentManager.addFragments(player, amount);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.fragments-redeemed").replace("%amount%", String.valueOf(amount))));
-                player.getInventory().removeItem(item);
+        Material block = event.getBlock().getType();
+        if (block.equals(Material.SKULL_ITEM)) {
+            fragmentManager.addFragments(player, player.getItemInHand().getAmount());
+            player.getInventory().removeItem(player.getItemInHand());
+            if(!player.hasPermission("dreamaddons.placefragment")){
                 event.setCancelled(true);
             }
         }
