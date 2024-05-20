@@ -23,8 +23,8 @@ public class Fragment {
 
     private final DreamAddons plugin;
 
-    public ItemStack giveFragment() {
-        ItemStack fragment = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+    public ItemStack giveFragment(int amount) {
+        ItemStack fragment = new ItemStack(Material.SKULL_ITEM, amount, (short) 3);
         SkullMeta meta = (SkullMeta) fragment.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), "");
         String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzExNDdkODlkMjQ5OGY5ZTIxZjM2YWQzZTUzNTZiMjMyN2M4Zjg1NTE4M2QzZTY5ZjRkNjYwZTViYzIxMGFiYiJ9fX0=";
@@ -37,8 +37,6 @@ public class Fragment {
         } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
             e.printStackTrace();
         }
-
-        fragment.setItemMeta(meta);
 
         String displayName = plugin.getConfig().getString("fragments.display-name");
         if (displayName != null) {
@@ -53,7 +51,7 @@ public class Fragment {
             meta.setLore(lore);
         }
 
-        fragment.setItemMeta(meta);  // Ensure ItemMeta is set back to ItemStack
+        fragment.setItemMeta(meta);
 
         return fragment;
     }

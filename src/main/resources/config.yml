@@ -89,3 +89,4 @@ messages:
   fragments-setted: "&7Hai impostato i frammenti di &f%player%&7 a &f%amount%."
   fragment-item-given: "&7Hai ottenuto un frammento fisico."
   invalid-amount: "&cL'importo inserito deve essere un numero intero."
+  fragments-redeemed: "&aHai riscattato un frammento."

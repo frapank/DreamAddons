@@ -21,7 +21,7 @@ public class FrammentoCommand implements CommandExecutor {
 
         if(args.length == 0){
             if(player.hasPermission("dreamfragments.admin")){
-                player.getInventory().addItem(fragment.giveFragment());
+                player.getInventory().addItem(fragment.giveFragment(1));
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragment-item-given")));
             } else {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));

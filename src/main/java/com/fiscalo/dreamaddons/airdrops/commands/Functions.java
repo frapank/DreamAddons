@@ -84,7 +84,7 @@ public class Functions {
         }
 
         Fragment frammento = new Fragment(DreamAddons.getInstance());
-        player.getInventory().addItem(frammento.giveFragment());
+        player.getInventory().addItem(frammento.giveFragment(1));
     }
 
     public static void removeAllArmorStand(){
