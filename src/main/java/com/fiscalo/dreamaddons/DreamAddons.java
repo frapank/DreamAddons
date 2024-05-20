@@ -8,9 +8,11 @@ import com.fiscalo.dreamaddons.airdrops.commands.Command;
 import com.fiscalo.dreamaddons.airdrops.commands.Functions;
 import com.fiscalo.dreamaddons.airdrops.listeners.InteractionEvent;
 import com.fiscalo.dreamaddons.airdrops.listeners.LeftClickEvent;
-import com.fiscalo.dreamaddons.commands.FrammentoCommand;
-import com.fiscalo.dreamaddons.commands.MainCommand;
-import com.fiscalo.dreamaddons.fragmentItem.Fragment;
+import com.fiscalo.dreamaddons.fragments.Storage.FragmentManager;
+import com.fiscalo.dreamaddons.fragments.commands.FrammentoCommand;
+import com.fiscalo.dreamaddons.fragments.commands.MainCommand;
+import com.fiscalo.dreamaddons.fragments.fragmentItem.Fragment;
+import com.fiscalo.dreamaddons.fragments.listeners.FileListener;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -35,7 +37,7 @@ public final class DreamAddons extends JavaPlugin {
     private ConfigManager configManager;
     private BukkitTask spawnerTask;
     private File fragmentsFile;
-    private com.fiscalo.dreamaddons.Storage.FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
     public String prefix;
 
 
@@ -56,7 +58,7 @@ public final class DreamAddons extends JavaPlugin {
         configManager = new ConfigManager();
         spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * 1);
         Functions.removeAllArmorStand();
-        this.fragmentManager = new com.fiscalo.dreamaddons.Storage.FragmentManager(this);
+        this.fragmentManager = new FragmentManager(this);
         instance = this;
         prefix = this.getConfig().getString("general.prefix");
         createFragmentsFile();
@@ -78,7 +80,7 @@ public final class DreamAddons extends JavaPlugin {
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new InteractionEvent(), this);
         getServer().getPluginManager().registerEvents(new LeftClickEvent(), this);
-        getServer().getPluginManager().registerEvents(new com.fiscalo.dreamaddons.listeners.FileListener(this, this.fragmentManager), this);
+        getServer().getPluginManager().registerEvents(new FileListener(this, this.fragmentManager), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
