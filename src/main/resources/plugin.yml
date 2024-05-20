@@ -1,0 +1,15 @@
+name: DreamAddons
+version: '${project.version}'
+author: Fiscalo
+description: Fragments currency made for DreamNetwork.
+main: com.fiscalo.dreamaddons.DreamAddons
+commands:
+  frammenti:
+    usage: /frammenti
+    description: comando principale.
+  frammento:
+    usage: /frammento
+    description: comando per ottenere un frammento.
+  airdrop:
+    usage: /airdrop
+    description: airdrop command
