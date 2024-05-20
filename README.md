@@ -30,6 +30,10 @@ Una volta messo dentro il server, bastera fare i comandi dedicati allo staff, ch
 - `/frammenti <player>`: Serve a vedere tutti i frammenti di un player.
 - `/frammenti <player> azzera`: Azzera i punti di un player.
 - `/frammenti <player> imposta`: Imposta i punti di un player.
+
+## Permessi
+  dream.admin -> Accesso ai comandi per gli AirDrop
+  dream.placefragments -> Permesso per piazzare le head
   
 ## Config
 
