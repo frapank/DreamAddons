@@ -13,3 +13,6 @@ commands:
   airdrop:
     usage: /airdrop
     description: airdrop command
+  itemstats:
+    usage: /itemstats
+    description: Test command

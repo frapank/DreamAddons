@@ -12,6 +12,8 @@ import com.fiscalo.dreamaddons.fragments.commands.MainCommand;
 import com.fiscalo.dreamaddons.fragments.fragmentItem.Fragment;
 import com.fiscalo.dreamaddons.fragments.listeners.FileListener;
 import com.fiscalo.dreamaddons.fragments.listeners.FragmentListener;
+import com.fiscalo.dreamaddons.itemstats.commands.TestCommand;
+import com.fiscalo.dreamaddons.itemstats.listeners.KillEvent;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -81,11 +83,13 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LeftClickEvent(), this);
         getServer().getPluginManager().registerEvents(new FileListener(this, this.fragmentManager), this);
         getServer().getPluginManager().registerEvents(new FragmentListener(this, this.fragmentManager), this);
+        getServer().getPluginManager().registerEvents(new KillEvent(), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
         this.getCommand("frammento").setExecutor(new FrammentoCommand(this, new Fragment(this)));
         this.getCommand("frammenti").setExecutor(new MainCommand(this, this.fragmentManager));
+        this.getCommand("itemstats").setExecutor(new TestCommand());
     }
 
     /* Config fragments */
