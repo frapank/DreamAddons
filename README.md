@@ -49,6 +49,7 @@ config-version: 1.0-BETA
 name: "&bAirDrops"                              # AirDrop Name tag
 block: "DIAMOND_BLOCK"                          # Block used to represent the AirDrop
 spawn-count: 3                                  # Set how may spawner will appear in seconds
+spawn-time: 1                                   # Count how many seconds apart they are generated
 
 # Sound Effects
 fall-sound: "NOTE_PLING"                        # Sound when the AirDrop falls
@@ -129,4 +130,7 @@ messages:
   fragments-resetted: "&7Hai azzerato i frammenti di &f%player%&7."
   fragments-setted: "&7Hai impostato i frammenti di &f%player%&7 a &f%amount%."
   fragment-item-given: "&7Hai ottenuto un frammento fisico."
-  invalid-amount: "&cL'importo inserito deve essere un numero intero.
+  invalid-amount: "&cL'importo inserito deve essere un numero intero."
+  fragments-redeemed: "&aHai riscattato un frammento."
+
+
