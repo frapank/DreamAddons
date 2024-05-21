@@ -1,6 +1,6 @@
-package com.fiscalo.dreamaddons.itemstats;
+package com.dream.dreamaddons.itemstats;
 
-import com.fiscalo.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.DreamAddons;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;

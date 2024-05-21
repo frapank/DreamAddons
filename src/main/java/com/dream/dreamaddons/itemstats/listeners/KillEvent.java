@@ -1,6 +1,6 @@
-package com.fiscalo.dreamaddons.itemstats.listeners;
+package com.dream.dreamaddons.itemstats.listeners;
 
-import com.fiscalo.dreamaddons.itemstats.ItemStats;
+import com.dream.dreamaddons.itemstats.ItemStats;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

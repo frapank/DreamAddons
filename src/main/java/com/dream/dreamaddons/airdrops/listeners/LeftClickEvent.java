@@ -1,17 +1,12 @@
-package com.fiscalo.dreamaddons.airdrops.listeners;
+package com.dream.dreamaddons.airdrops.listeners;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.airdrops.commands.Functions;
-import org.bukkit.Material;
+import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.airdrops.commands.Functions;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class LeftClickEvent implements Listener {
 

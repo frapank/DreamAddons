@@ -2,7 +2,7 @@ name: DreamAddons
 version: '${project.version}'
 author: Fiscalo
 description: Fragments currency made for DreamNetwork.
-main: com.fiscalo.dreamaddons.DreamAddons
+main: com.dream.dreamaddons.DreamAddons
 commands:
   frammenti:
     usage: /frammenti

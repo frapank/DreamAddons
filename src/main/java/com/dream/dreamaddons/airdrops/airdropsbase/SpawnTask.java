@@ -1,7 +1,7 @@
-package com.fiscalo.dreamaddons.airdrops.airdropsbase;
+package com.dream.dreamaddons.airdrops.airdropsbase;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.airdrops.commands.Functions;
+import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.airdrops.commands.Functions;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -10,7 +10,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class SpawnTask extends BukkitRunnable {
 
@@ -35,9 +34,7 @@ public class SpawnTask extends BukkitRunnable {
         }
 
 
-
-
     }
 
-
 }
+

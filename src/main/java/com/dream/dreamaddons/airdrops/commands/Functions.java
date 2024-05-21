@@ -1,8 +1,8 @@
-package com.fiscalo.dreamaddons.airdrops.commands;
+package com.dream.dreamaddons.airdrops.commands;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.airdrops.airdropsbase.AirDropManager;
-import com.fiscalo.dreamaddons.fragments.fragmentItem.Fragment;
+import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.airdrops.airdropsbase.AirDropManager;
+import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;

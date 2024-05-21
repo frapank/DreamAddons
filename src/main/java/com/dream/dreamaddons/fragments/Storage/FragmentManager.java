@@ -1,6 +1,6 @@
-package com.fiscalo.dreamaddons.fragments.Storage;
+package com.dream.dreamaddons.fragments.Storage;
 
-import com.fiscalo.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.DreamAddons;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 

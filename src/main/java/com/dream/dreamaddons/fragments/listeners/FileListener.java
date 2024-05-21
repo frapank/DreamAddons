@@ -1,7 +1,7 @@
-package com.fiscalo.dreamaddons.fragments.listeners;
+package com.dream.dreamaddons.fragments.listeners;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.fragments.Storage.FragmentManager;
+import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.fragments.Storage.FragmentManager;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

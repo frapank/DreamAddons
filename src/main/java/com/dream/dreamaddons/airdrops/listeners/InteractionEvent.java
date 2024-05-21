@@ -1,7 +1,7 @@
-package com.fiscalo.dreamaddons.airdrops.listeners;
+package com.dream.dreamaddons.airdrops.listeners;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.airdrops.commands.Functions;
+import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.airdrops.commands.Functions;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;

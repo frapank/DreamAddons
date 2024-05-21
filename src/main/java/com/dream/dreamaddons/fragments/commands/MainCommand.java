@@ -1,7 +1,7 @@
-package com.fiscalo.dreamaddons.fragments.commands;
+package com.dream.dreamaddons.fragments.commands;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.fragments.Storage.FragmentManager;
+import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.fragments.Storage.FragmentManager;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

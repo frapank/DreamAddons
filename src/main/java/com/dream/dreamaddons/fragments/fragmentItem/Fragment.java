@@ -1,7 +1,7 @@
-package com.fiscalo.dreamaddons.fragments.fragmentItem;
+package com.dream.dreamaddons.fragments.fragmentItem;
 
 
-import com.fiscalo.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.DreamAddons;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

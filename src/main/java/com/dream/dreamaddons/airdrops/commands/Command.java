@@ -1,6 +1,6 @@
-package com.fiscalo.dreamaddons.airdrops.commands;
+package com.dream.dreamaddons.airdrops.commands;
 
-import com.fiscalo.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.DreamAddons;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;

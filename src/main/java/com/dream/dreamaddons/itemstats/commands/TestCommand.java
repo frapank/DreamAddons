@@ -1,7 +1,6 @@
-package com.fiscalo.dreamaddons.itemstats.commands;
+package com.dream.dreamaddons.itemstats.commands;
 
-import com.fiscalo.dreamaddons.DreamAddons;
-import com.fiscalo.dreamaddons.itemstats.ItemStats;
+import com.dream.dreamaddons.itemstats.ItemStats;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

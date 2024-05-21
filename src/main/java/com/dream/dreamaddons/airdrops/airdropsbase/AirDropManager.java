@@ -1,6 +1,6 @@
-package com.fiscalo.dreamaddons.airdrops.airdropsbase;
+package com.dream.dreamaddons.airdrops.airdropsbase;
 
-import com.fiscalo.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.DreamAddons;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
