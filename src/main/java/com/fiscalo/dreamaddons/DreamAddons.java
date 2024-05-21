@@ -1,7 +1,5 @@
 package com.fiscalo.dreamaddons;
 
-
-
 import com.fiscalo.dreamaddons.airdrops.airdropsbase.ConfigManager;
 import com.fiscalo.dreamaddons.airdrops.airdropsbase.SpawnTask;
 import com.fiscalo.dreamaddons.airdrops.commands.Command;
@@ -49,7 +47,7 @@ public final class DreamAddons extends JavaPlugin {
         getLogger().warning("<--------------------->");
         getLogger().warning(" Airdrop plugin stared ");
         getLogger().warning("                       ");
-        getLogger().warning(" By Gourmet/Fiscalo  ");
+        getLogger().warning("   By Gourmet/Fiscalo  ");
         getLogger().warning("<--------------------->");
         saveDefaultConfig();
 
@@ -57,7 +55,7 @@ public final class DreamAddons extends JavaPlugin {
         instance = this;
         spawns = new HashMap<>();
         configManager = new ConfigManager();
-        spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * 1);
+        spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
         Functions.removeAllArmorStand();
         this.fragmentManager = new FragmentManager(this);
         instance = this;
