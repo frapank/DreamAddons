@@ -9,7 +9,8 @@ Versione: 1.8.8
 Una volta messo dentro il server, bastera fare i comandi dedicati allo staff, che inizieranno con:
 1. /airdrop, 
 2. /frammento 
-3. /frammenti.
+3. /frammenti
+4. /itemstats
 
 ## Caratteristiche principali
 
@@ -18,6 +19,8 @@ Una volta messo dentro il server, bastera fare i comandi dedicati allo staff, ch
 
 - **Feature 1:** I frammenti sono degl'Item riscattabili tramite comando o tramite gli Airdrop.
 - **Feature 2:** Quando ci clicchi sopra ti daranno dei punti che potrai utilizzare in un mercato apposito.
+
+- **Feature 1:** Ogni kill si aggiorneranno gl'itemstats di determinati utensili.
 
 
 ## Comandi (Admin)
@@ -30,10 +33,11 @@ Una volta messo dentro il server, bastera fare i comandi dedicati allo staff, ch
 - `/frammenti <player>`: Serve a vedere tutti i frammenti di un player.
 - `/frammenti <player> azzera`: Azzera i punti di un player.
 - `/frammenti <player> imposta`: Imposta i punti di un player.
+- `/itemstats`: Testa la funzione delle statistiche
 
 ## Permessi
 
-- `dream.admin`: Accesso ai comandi per gli AirDrop
+- `dream.admin`: Accesso ai comandi per gli AirDrop e /itemstats
 - `dream.placefragments`: Permesso per piazzare le head
   
 ## Config
