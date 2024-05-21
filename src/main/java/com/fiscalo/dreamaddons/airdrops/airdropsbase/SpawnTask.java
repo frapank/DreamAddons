@@ -1,11 +1,15 @@
 package com.fiscalo.dreamaddons.airdrops.airdropsbase;
 
 import com.fiscalo.dreamaddons.DreamAddons;
+import com.fiscalo.dreamaddons.airdrops.commands.Functions;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class SpawnTask extends BukkitRunnable {
@@ -15,36 +19,18 @@ public class SpawnTask extends BukkitRunnable {
     /* Spawn the airdrops */
     @Override
     public void run() {
-        /* ⚠️Questo è il codice che sto rifacendo, per ora metto quello vecchio ⚠️
-        //Rimuovi tutti gli armorstand
+
         Functions.removeAllArmorStand();
-        List<Integer> numeri = new ArrayList<>();
-        Random random = new Random();
-        int numero;
-        for(int i = 0; i < config.getInt("spawn-count"); i++){
-            numero = random.nextInt(ProjectAirFall.getSpawns().size());
-            numeri.add(numero);
-        }
-        for (Location location : ProjectAirFall.getSpawns().values()) {
-            if (i == index) {
-                AirDropManager.spawnDrop(location);
-            }
-            i++;
-        }
-        */
+        List<Location> locations = new ArrayList<>(DreamAddons.getSpawns().values());
+        Collections.shuffle(locations);
+        int spawnCount = Math.min(config.getInt("spawn-count"), locations.size());
 
-        //Crea un numero casuale
-
-        Random random = new Random();
-        int index = random.nextInt(DreamAddons.getSpawns().size());
-        int i = 0;
-
-        for (Location location : DreamAddons.getSpawns().values()) {
-            if (i == index) {
-                AirDropManager.spawnDrop(location);
-            }
-            i++;
+        for (int i = 0; i < spawnCount; i++) {
+            Location location = locations.get(i);
+            AirDropManager.spawnDrop(location);
         }
+
+        DreamAddons.getInstance().getLogger().info("AirDrop spawned");
 
 
 
