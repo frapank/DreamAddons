@@ -22,14 +22,18 @@ public class SpawnTask extends BukkitRunnable {
 
         Functions.removeAllArmorStand();
         Collections.shuffle(locations);
-        int spawnCount = Math.min(config.getInt("spawn-count"), locations.size());
+        try{
+            int spawnCount = Math.min(config.getInt("spawn-count"), locations.size());
+            for (int i = 0; i < spawnCount; i++) {
+                Location location = locations.get(i);
+                AirDropManager.spawnDrop(location);
+            }
 
-        for (int i = 0; i < spawnCount; i++) {
-            Location location = locations.get(i);
-            AirDropManager.spawnDrop(location);
+            DreamAddons.getInstance().getLogger().info("AirDrop spawned");
+        }catch(Exception e){
+            DreamAddons.getInstance().getLogger().warning("spawn-count config string error :" + e);
         }
 
-        DreamAddons.getInstance().getLogger().info("AirDrop spawned");
 
 
 
