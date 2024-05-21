@@ -15,13 +15,12 @@ import java.util.Random;
 public class SpawnTask extends BukkitRunnable {
 
     private static FileConfiguration config = DreamAddons.getInstance().getConfig();
-
+    private static List<Location> locations = new ArrayList<>(DreamAddons.getSpawns().values());
     /* Spawn the airdrops */
     @Override
     public void run() {
 
         Functions.removeAllArmorStand();
-        List<Location> locations = new ArrayList<>(DreamAddons.getSpawns().values());
         Collections.shuffle(locations);
         int spawnCount = Math.min(config.getInt("spawn-count"), locations.size());
 
