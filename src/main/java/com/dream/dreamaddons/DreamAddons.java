@@ -12,6 +12,7 @@ import com.dream.dreamaddons.fragments.commands.MainCommand;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
+import com.dream.dreamaddons.fragments.shop.commandListener.CommandGui;
 import com.dream.dreamaddons.itemstats.commands.TestCommand;
 import com.dream.dreamaddons.itemstats.listeners.KillEvent;
 import lombok.Getter;
@@ -90,6 +91,7 @@ public final class DreamAddons extends JavaPlugin {
         this.getCommand("frammento").setExecutor(new FrammentoCommand(this, new Fragment(this)));
         this.getCommand("frammenti").setExecutor(new MainCommand(this, this.fragmentManager));
         this.getCommand("itemstats").setExecutor(new TestCommand());
+        this.getCommand("blackgui").setExecutor(new CommandGui());
     }
 
     /* Config fragments */

@@ -38,7 +38,6 @@ public class ShopGui {
         ItemMeta meta = skull.getItemMeta();
         //Impostare il tipo di testa
 
-
         List<String> lore = new ArrayList<>();
         lore.add(DreamAddons.color("La &6Keep Inventory &fsarà"));
         lore.add(DreamAddons.color("applicata alla prossima &cmorte"));
