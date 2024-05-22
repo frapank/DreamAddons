@@ -15,7 +15,6 @@ public class KillEvent implements Listener {
     @EventHandler
     public void onKill(PlayerDeathEvent event){
         if(event.getEntity().getKiller() instanceof Player){
-
             Player player = event.getEntity().getKiller();
             if(player.getItemInHand() != null){
                 ItemStack item = player.getItemInHand();
