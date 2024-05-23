@@ -31,8 +31,8 @@ world: "world"                                  # World in which AirDrops will b
 
 # Staff Messages
 spawn-message: "&eAirDrop spawned"              # Message when an AirDrop is spawned
-list-message: "&eList of AirDrops:"             # Header for the list of AirDrops spawner
-list-spawn-message: "&f-> %spawn-id%"           # Item in the list of AirDrops spawner
+list-message: "&7The set spawners are:"         # Header for the list of AirDrops spawner
+list-spawn-message: "&9• &7%spawn-id%"          # Item in the list of AirDrops spawner
 spawn-already-exist: "&cSpawn already exists"   # Message when attempting to create an AirDrop at an existing ID
 spawn-added: "&aSpawn added"                    # Message when a new AirDrop location is added
 no-perm: "&cInsufficient permission"            # Message when a player does not have the necessary permissions
@@ -40,10 +40,10 @@ no-perm: "&cInsufficient permission"            # Message when a player does not
 
 # Help Message
 help-message:
-  - "&eHelp message for &aAirDrops plugin&e:"   # Header for the help message
-  - "&f/airdrop spawn"                          # Command to spawn an AirDrop
-  - "&f/airdrop list"                           # Command to view the list of spawned AirDrops
-  - "&f/airdrop create <number>"                # Command to add a new AirDrop location
+  - "&7AirDrops commands:"   # Header for the help message
+  - "&9• &7/airdrop spawn"                          # Command to spawn an AirDrop
+  - "&9• &7/airdrop list"                           # Command to view the list of spawned AirDrops
+  - "&9• &7/airdrop create <number>"                # Command to add a new AirDrop location
 
 # Spawn Locations
 locations:                                      # AirDrop spawn locations will be automatically added here
