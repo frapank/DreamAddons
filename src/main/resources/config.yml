@@ -1,10 +1,10 @@
 #####################################################################
-##                                                  ,--.           ##
-##    ,------.                                      |  |           ##
-##    |  .-.  \ ,--.--. ,---.  ,--,--.,--,--,--.,---|  |---.       ##
-##    |  |  \  :|  .--'| .-. :' ,-.  ||        |'---|  |---'       ##
-##    |  '--'  /|  |   \   --.\ '-'  ||  |  |  |    |  |           ##
-##    `-------' `--'    `----' `--`--'`--`--`--'    `--'           ##
+##                                                                 ##
+##    ,------.                                     ,--.            ##
+##    |  .-.  \ ,--.--. ,---.  ,--,--.,--,--,--.,--|  |--.         ##
+##    |  |  \  :|  .--'| .-. :' ,-.  ||        |'--|  |--'         ##
+##    |  '--'  /|  |   \   --.\ '-'  ||  |  |  |   `--'            ##
+##    `-------' `--'    `----' `--`--'`--`--`--'                   ##
 #####################################################################
 
 
@@ -40,13 +40,13 @@ no-perm: "&cInsufficient permission"            # Message when a player does not
 
 # Help Message
 help-message:
-  - "&7AirDrops commands:"   # Header for the help message
+  - "&7AirDrops commands:"                          # Header for the help message
   - "&9• &7/airdrop spawn"                          # Command to spawn an AirDrop
   - "&9• &7/airdrop list"                           # Command to view the list of spawned AirDrops
   - "&9• &7/airdrop create <number>"                # Command to add a new AirDrop location
 
 # Spawn Locations
-locations:                                      # AirDrop spawn locations will be automatically added here
+locations:                                          # AirDrop spawn locations will be automatically added here
   1:
     x: 0
     y: 0
@@ -58,17 +58,17 @@ locations:                                      # AirDrop spawn locations will b
 ############################
 
 general:
-  prefix: "&f&lDREAM&9&lFRAGMENTS &7» "
+  prefix: "&f&lDREAM&9&lADDONS &7» "
   default-message:
     - ""
-    - "&7&m     [&f&lDREAM&9&lFRAGMENTS&7&m]     "
+    - "&7&m     [&f&lDREAM&9&lADDONS&7&m]     "
     - "&f/frammenti &7• &fVisualizza questo messaggio."
     - "&f/frammenti (player) &7• &fVisualizza i frammenti posseduti da un giocatore."
     - "&7&m                                       "
     - ""
   admin-message:
     - ""
-    - "&7&m     [&f&lDREAM&9&lFRAGMENTS&7&m]     "
+    - "&7&m     [&f&lDREAM&9&lADDONS&7&m]     "
     - "&f/frammenti &7• &fVisualizza questo messaggio."
     - "&f/frammenti (player) &7• &fVisualizza i frammenti posseduti da un giocatore."
     - "&f/frammento &7• &fRiscatta frammento in un oggetto fisico."
