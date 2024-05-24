@@ -27,6 +27,10 @@ fall-sound: "NOTE_PLING"                        # Sound when the AirDrop falls
 end-sound: "LEVEL_UP"                           # Sound when the AirDrop lands
 claim-sound: "EXPLODE"                          # Sound when the AirDrop is claimed
 
+# Particel Effects
+particel-up: "FLAME"                            # Particle appearing above the AirDrop
+claim-effect: "SMOKE_NORMA"                     # Particle appearing when a player claim AirDrop
+
 # Gameplay Settings
 command-claim: "give %player% minecraft:apple"  # Command executed when a player claims the AirDrop
 world: "world"                                  # World in which AirDrops will be spawned

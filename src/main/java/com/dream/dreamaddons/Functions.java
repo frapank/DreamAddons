@@ -1,4 +1,4 @@
-package com.dream.dreamaddons.airdrops.commands;
+package com.dream.dreamaddons;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.airdrops.airdropsbase.AirDropManager;
@@ -113,26 +113,72 @@ public class Functions {
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
     }
 
-    public static void playExplosionEffect(Player player, Location location) {
-        float x = (float) location.getX();
-        float y = (float) location.getY();
-        float z = (float) location.getZ();
-        float offsetX = 0;
-        float offsetY = 0;
-        float offsetZ = 0;
-        float speed = 1;
-        int count = 100;
+    public static void playExplosionEffect(Location location) {
+
+        if(config.getString("claim-effect").isEmpty()){
+            return;
+        }
+
+        try {
+            EnumParticle paricella = EnumParticle.valueOf(config.getString("claim-effect"));
+            float x = (float) location.getX();
+            float y = (float) location.getY();
+            float z = (float) location.getZ();
+            float offsetX = 0;
+            float offsetY = 0;
+            float offsetZ = 0;
+            float speed = 1;
+            int count = 100;
 
 
-        PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
-                EnumParticle.SMOKE_NORMAL,
-                true,
-                x, y, z,
-                offsetX, offsetY, offsetZ,
-                speed,
-                count
-        );
+            PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
+                    paricella,
+                    true,
+                    x, y, z,
+                    offsetX, offsetY, offsetZ,
+                    speed,
+                    count
+            );
 
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+            }
+        } catch (Exception e){
+            DreamAddons.getInstance().getLogger().warning("Error in claim-effect config:" + e);
+        }
+    }
+
+    public static void spawnFireParticle(Location location) {
+
+        if(config.getString("particel-up").isEmpty()){
+            return;
+        }
+
+        try {
+            EnumParticle paricella = EnumParticle.valueOf(config.getString("particel-up"));
+            float x = (float) location.getX();
+            float y = (float) location.getY();
+            float z = (float) location.getZ();
+            float offsetX = 0;
+            float offsetY = 0;
+            float offsetZ = 0;
+            float speed = 0;
+            int count = 1;
+
+            PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
+                    paricella,
+                    true,
+                    x, y, z,
+                    offsetX, offsetY, offsetZ,
+                    speed,
+                    count
+            );
+
+            for (Player user : Bukkit.getOnlinePlayers()) {
+                ((CraftPlayer) user).getHandle().playerConnection.sendPacket(packet);
+            }
+        } catch (Exception e){
+            DreamAddons.getInstance().getLogger().warning("Error in particel-up config:" + e);
+        }
     }
 }

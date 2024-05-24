@@ -1,6 +1,7 @@
 package com.dream.dreamaddons.airdrops.commands;
 
 import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.Functions;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;

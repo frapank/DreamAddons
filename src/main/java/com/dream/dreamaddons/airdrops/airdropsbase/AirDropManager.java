@@ -1,6 +1,7 @@
 package com.dream.dreamaddons.airdrops.airdropsbase;
 
 import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.Functions;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.*;
@@ -84,7 +85,7 @@ public class AirDropManager {
 
                 );
 
-
+                Functions.spawnFireParticle(newLocation);
                 armorStand.teleport(newLocation);
             }
 

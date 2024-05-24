@@ -1,7 +1,7 @@
 package com.dream.dreamaddons.fragments.listeners;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.airdrops.commands.Functions;
+import com.dream.dreamaddons.Functions;
 import com.dream.dreamaddons.fragments.Storage.FragmentManager;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
