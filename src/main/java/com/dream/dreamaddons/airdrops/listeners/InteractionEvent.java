@@ -30,6 +30,7 @@ public class InteractionEvent implements Listener {
                 }
 
                 Functions.executeCommand(player);
+                Functions.playExplosionEffect(player, armorStand.getLocation());
                 armorStand.remove();
             }
         }

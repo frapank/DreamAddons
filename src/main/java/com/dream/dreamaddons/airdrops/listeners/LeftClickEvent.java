@@ -17,6 +17,7 @@ public class LeftClickEvent implements Listener {
         ArmorStand armorStand = event.getRightClicked();
         if(armorStand.getCustomName() != null && armorStand.getCustomName().equals(DreamAddons.color(config.getString("name")))){
             Functions.executeCommand(event.getPlayer());
+            Functions.playExplosionEffect(event.getPlayer(), armorStand.getLocation());
             armorStand.remove();
             event.setCancelled(true);
         }

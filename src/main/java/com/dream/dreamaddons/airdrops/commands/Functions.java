@@ -3,9 +3,7 @@ package com.dream.dreamaddons.airdrops.commands;
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.airdrops.airdropsbase.AirDropManager;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
-import net.minecraft.server.v1_8_R3.ChatComponentText;
-import net.minecraft.server.v1_8_R3.IChatBaseComponent;
-import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -115,4 +113,26 @@ public class Functions {
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
     }
 
+    public static void playExplosionEffect(Player player, Location location) {
+        float x = (float) location.getX();
+        float y = (float) location.getY();
+        float z = (float) location.getZ();
+        float offsetX = 0;
+        float offsetY = 0;
+        float offsetZ = 0;
+        float speed = 1;
+        int count = 100;
+
+
+        PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
+                EnumParticle.SMOKE_NORMAL,
+                true,
+                x, y, z,
+                offsetX, offsetY, offsetZ,
+                speed,
+                count
+        );
+
+        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+    }
 }
