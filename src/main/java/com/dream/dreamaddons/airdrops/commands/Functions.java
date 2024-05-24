@@ -3,9 +3,13 @@ package com.dream.dreamaddons.airdrops.commands;
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.airdrops.airdropsbase.AirDropManager;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
+import net.minecraft.server.v1_8_R3.ChatComponentText;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
+import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 
@@ -75,16 +79,18 @@ public class Functions {
 
     public static void executeCommand(Player player){
         Random random = new Random(); // Creazione dell'istanza di Random
-        int randomNumber = random.nextInt(2) + 1;
-        if(randomNumber == 1){
-            String str = config.getString("command-claim");
-            str = str.replace("%player%", player.getName());
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
+        int randomNumber = random.nextInt(10) + 1;
+        if(randomNumber <= 3){
+            Fragment frammento = new Fragment(DreamAddons.getInstance());
+            player.getInventory().addItem(frammento.giveFragment(1));
+            sendActionBar(player, DreamAddons.color("&9Hai ottenuto 1 frammento"));
             return;
         }
 
-        Fragment frammento = new Fragment(DreamAddons.getInstance());
-        player.getInventory().addItem(frammento.giveFragment(1));
+        String str = config.getString("command-claim");
+        str = str.replace("%player%", player.getName());
+        Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
+        sendActionBar(player, DreamAddons.color("&9Hai ottenuto un pò di soldi"));
     }
 
     public static void removeAllArmorStand(){
@@ -101,6 +107,12 @@ public class Functions {
         } catch (NullPointerException e){
             DreamAddons.getInstance().getLogger().warning("World exeption: " + e);
         }
+    }
+
+    public static void sendActionBar(Player player, String message) {
+        IChatBaseComponent chatComponent = new ChatComponentText(message);
+        PacketPlayOutChat packet = new PacketPlayOutChat(chatComponent, (byte) 2);
+        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
     }
 
 }

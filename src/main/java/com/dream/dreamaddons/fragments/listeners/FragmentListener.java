@@ -1,6 +1,7 @@
 package com.dream.dreamaddons.fragments.listeners;
 
 import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.airdrops.commands.Functions;
 import com.dream.dreamaddons.fragments.Storage.FragmentManager;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ public class FragmentListener implements Listener {
 
         if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) && item != null && item.hasItemMeta()) {
             redeemFragment(player, item);
+            Functions.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
         }
     }
 
@@ -45,6 +47,7 @@ public class FragmentListener implements Listener {
         if (block.equals(Material.SKULL_ITEM)) {
             fragmentManager.addFragments(player, player.getItemInHand().getAmount());
             player.getInventory().removeItem(player.getItemInHand());
+            Functions.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
             if(!player.hasPermission("dream.placefragments")){
                 event.setCancelled(true);
             }

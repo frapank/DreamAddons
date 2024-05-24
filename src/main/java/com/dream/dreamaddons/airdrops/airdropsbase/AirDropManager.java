@@ -30,12 +30,11 @@ public class AirDropManager {
 
         if(config.getBoolean("skull-head")){
             ItemStack skull = new ItemStack(skullItem(config.getString("skull-id")));
+            armorStand.setHelmet(skull);
         } else {
             String materialName = config.getString("block");
             armorStand.setHelmet(new ItemStack(Material.matchMaterial(materialName)));
         }
-        String materialName = config.getString("block");
-        armorStand.setHelmet(new ItemStack(Material.matchMaterial(materialName)));
 
         armorStand.setCustomName(DreamAddons.color(config.getString("name")));
         armorStand.setCustomNameVisible(true);
