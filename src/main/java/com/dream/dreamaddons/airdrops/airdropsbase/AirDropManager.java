@@ -1,11 +1,18 @@
 package com.dream.dreamaddons.airdrops.airdropsbase;
 
 import com.dream.dreamaddons.DreamAddons;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.lang.reflect.Field;
+import java.util.UUID;
 
 public class AirDropManager {
 
@@ -21,6 +28,12 @@ public class AirDropManager {
         armorStand.setVisible(false);
         armorStand.setSmall(true);
 
+        if(config.getBoolean("skull-head")){
+            ItemStack skull = new ItemStack(skullItem(config.getString("skull-id")));
+        } else {
+            String materialName = config.getString("block");
+            armorStand.setHelmet(new ItemStack(Material.matchMaterial(materialName)));
+        }
         String materialName = config.getString("block");
         armorStand.setHelmet(new ItemStack(Material.matchMaterial(materialName)));
 
@@ -77,6 +90,27 @@ public class AirDropManager {
             }
 
         }.runTaskTimer(DreamAddons.getInstance(), 0, 3);
+    }
+
+    public static ItemStack skullItem(String id){
+
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+        String value = id;
+        profile.getProperties().put("textures", new Property("textures", value));
+
+        try {
+            Field profileField = meta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(meta, profile);
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+            e.printStackTrace();
+        }
+
+        skull.setItemMeta(meta);
+        return skull;
+
     }
 
 

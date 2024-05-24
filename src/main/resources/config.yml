@@ -17,6 +17,8 @@ config-version: 1.0-BETA
 # General Settings
 name: "&bAirDrops"                              # AirDrop Name tag
 block: "DIAMOND_BLOCK"                          # Block used to represent the AirDrop
+skull-head: false                               # The head of the airdrop will be a skull
+skull-id: ""                                    # Skull id for the airdrop
 spawn-count: 3                                  # Set how may spawner will appear in seconds
 spawn-time: 1                                   # Count how many seconds apart they are generated
 
