@@ -22,9 +22,9 @@ public class ShopGui {
 
     public static void openGui(Player player){
 
-        Inventory gui = Bukkit.createInventory(player,26, "Black Market");
+        Inventory gui = Bukkit.createInventory(player,27, "Black Market");
 
-        gui.setItem(10, new ItemStack(keepInventoryItemStack()));
+        gui.setItem(11, new ItemStack(keepInventoryItemStack()));
         gui.setItem(13, new ItemStack(doubleXpItemStack()));
 
         player.openInventory(gui);
@@ -57,8 +57,12 @@ public class ShopGui {
         }
 
         List<String> lore = new ArrayList<>();
-        lore.add(DreamAddons.color("La &6Keep Inventory &fsarà"));
-        lore.add(DreamAddons.color("rimosso alla prossima &cmorte &fo &criavvio"));
+        lore.add("");
+        lore.add(DreamAddons.color("&8| &7La Keep Inventory sarà"));
+        lore.add(DreamAddons.color("&8| &7rimosso alla prossima morte o riavvio"));
+        lore.add("");
+        lore.add(DreamAddons.color("&8» &eClicca per aprire"));
+        lore.add("");
 
         meta.setDisplayName(DreamAddons.color("&6Keep Inventory"));
         meta.setLore(lore);
@@ -95,8 +99,12 @@ public class ShopGui {
         }
 
         List<String> lore = new ArrayList<>();
-        lore.add(DreamAddons.color("Il &aBoost XP &fsarà"));
-        lore.add(DreamAddons.color("rimosso alla prossima &cmorte &fo &criavvio"));
+        lore.add("");
+        lore.add(DreamAddons.color("&8| &7Il Boost XP sarà"));
+        lore.add(DreamAddons.color("&8| &7rimosso alla prossima morte o riavvio"));
+        lore.add("");
+        lore.add(DreamAddons.color("&8» &eClicca per aprire"));
+        lore.add("");
 
         meta.setDisplayName(DreamAddons.color("&aBoost XP"));
         meta.setLore(lore);

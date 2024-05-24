@@ -12,7 +12,7 @@ public class CommandGui implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
-        if(command instanceof Player){
+        if(commandSender instanceof Player){
             Player player = (Player) commandSender;
             ShopGui.openGui(player);
             player.sendMessage(DreamAddons.color("&aGui aperta"));

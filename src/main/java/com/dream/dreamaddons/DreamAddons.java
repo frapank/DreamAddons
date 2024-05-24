@@ -13,6 +13,7 @@ import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
 import com.dream.dreamaddons.fragments.shop.commandListener.CommandGui;
+import com.dream.dreamaddons.fragments.shop.shoplisteners.ClickListener;
 import com.dream.dreamaddons.itemstats.commands.TestCommand;
 import com.dream.dreamaddons.itemstats.listeners.KillEvent;
 import lombok.Getter;
@@ -20,12 +21,16 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.UUID;
 import java.util.logging.Level;
 
 public final class DreamAddons extends JavaPlugin {
@@ -36,6 +41,10 @@ public final class DreamAddons extends JavaPlugin {
     private FileConfiguration fragmentsConfig;
     @Getter
     private static HashMap<String, Location> spawns;
+    @Getter
+    private static LinkedList<UUID> keepInventoryPlayers;
+    @Getter
+    private static LinkedList<UUID> boostXpPlayers;
     private ConfigManager configManager;
     private BukkitTask spawnerTask;
     private File fragmentsFile;
@@ -85,6 +94,7 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FileListener(this, this.fragmentManager), this);
         getServer().getPluginManager().registerEvents(new FragmentListener(this, this.fragmentManager), this);
         getServer().getPluginManager().registerEvents(new KillEvent(), this);
+        getServer().getPluginManager().registerEvents(new ClickListener(), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
