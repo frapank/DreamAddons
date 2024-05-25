@@ -6,17 +6,16 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-public class onDeathEvent implements Listener {
+
+public class KeepInventoryListener implements Listener {
 
     @EventHandler
     public static void onDeath(PlayerDeathEvent event){
 
-       if(DreamAddons.getKeepInventoryPlayers().contains(event.getEntity().getUniqueId())){
+       if(DreamAddons.getKeepInventoryPlayers().contains(event.getEntity().getPlayer().getUniqueId())){
            Player player = event.getEntity();
 
-           //Da la keep inventory
-
-           DreamAddons.getKeepInventoryPlayers().remove(player.getUniqueId());
+           DreamAddons.getInventorysForKeep().put(player, player.getInventory());
        }
 
     }

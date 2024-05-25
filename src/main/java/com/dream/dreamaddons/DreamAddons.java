@@ -20,6 +20,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -42,6 +45,8 @@ public final class DreamAddons extends JavaPlugin {
     private static LinkedList<UUID> keepInventoryPlayers;
     @Getter
     private static LinkedList<UUID> boostXpPlayers;
+    @Getter
+    private static HashMap<Player, Inventory> inventorysForKeep;
     private ConfigManager configManager;
     private BukkitTask spawnerTask;
     private File fragmentsFile;
@@ -64,6 +69,9 @@ public final class DreamAddons extends JavaPlugin {
         instance = this;
         spawns = new HashMap<>();
         configManager = new ConfigManager();
+        keepInventoryPlayers = new LinkedList<>();
+        boostXpPlayers = new LinkedList<>();
+        inventorysForKeep = new HashMap<>();
         spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
         Functions.removeAllArmorStand();
         this.fragmentManager = new FragmentManager(this);
