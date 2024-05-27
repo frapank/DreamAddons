@@ -4,12 +4,10 @@ import com.dream.dreamaddons.DreamAddons;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
@@ -19,27 +17,19 @@ import java.util.UUID;
 
 public class ShopGui {
 
-
+    /* Gui */
     public static void openGui(Player player){
 
         Inventory gui = Bukkit.createInventory(player,27, "Black Market");
 
         gui.setItem(11, new ItemStack(keepInventoryItemStack()));
-        gui.setItem(13, new ItemStack(doubleXpItemStack()));
+        gui.setItem(13, new ItemStack(doubleMoneyItemStack()));
 
         player.openInventory(gui);
     }
 
 
-    /*
-        Questo item costera 12 punti
-        Ti permettera di avere la keepInventory
-        alla prossima morte
-
-        Head : Una sorta di crafting table
-        Nome : KeepInventory
-        Lore : Indefinita
-     */
+    /* Item for the Gui */
     private static ItemStack keepInventoryItemStack(){
 
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
@@ -72,22 +62,14 @@ public class ShopGui {
     }
 
 
-    /*
-        Fino alla morte avra il doppio
-        dell'esperienza ad ogni kill
-
-        Head : Una sorta di blocco d'esperienza
-        Nome : KeepInventory
-        Lore : Indefinita
-    */
-    private static ItemStack doubleXpItemStack(){
+    private static ItemStack doubleMoneyItemStack(){
 
 
 
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), "");
-        String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODdkODg1YjMyYjBkZDJkNmI3ZjFiNTgyYTM0MTg2ZjhhNTM3M2M0NjU4OWEyNzM0MjMxMzJiNDQ4YjgwMzQ2MiJ9fX0=";
+        String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWZkMTA4MzgzZGZhNWIwMmU4NjYzNTYwOTU0MTUyMGU0ZTE1ODk1MmQ2OGMxYzhmOGYyMDBlYzdlODg2NDJkIn19fQ==";
         profile.getProperties().put("textures", new Property("textures", value));
 
         try {
@@ -100,13 +82,13 @@ public class ShopGui {
 
         List<String> lore = new ArrayList<>();
         lore.add("");
-        lore.add(DreamAddons.color("&8| &7Il Boost XP sarà"));
+        lore.add(DreamAddons.color("&8| &7Il Boost Money sarà"));
         lore.add(DreamAddons.color("&8| &7rimosso alla prossima morte o riavvio"));
         lore.add("");
         lore.add(DreamAddons.color("&8» &eClicca per aprire"));
         lore.add("");
 
-        meta.setDisplayName(DreamAddons.color("&aBoost XP"));
+        meta.setDisplayName(DreamAddons.color("&eBoost Money"));
         meta.setLore(lore);
 
         skull.setItemMeta(meta);

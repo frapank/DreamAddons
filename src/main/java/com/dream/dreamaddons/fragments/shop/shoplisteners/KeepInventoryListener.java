@@ -9,6 +9,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class KeepInventoryListener implements Listener {
 
+
     @EventHandler
     public static void onDeath(PlayerDeathEvent event){
 

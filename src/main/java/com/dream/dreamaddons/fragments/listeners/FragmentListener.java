@@ -33,10 +33,15 @@ public class FragmentListener implements Listener {
         Player player = event.getPlayer();
         Action action = event.getAction();
         ItemStack item = event.getItem();
+        String itemName = item.getItemMeta().getDisplayName();
 
-        if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) && item != null && item.hasItemMeta()) {
+        if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)
+                && item != null && item.hasItemMeta() &&
+                itemName.equalsIgnoreCase("fragments.display-name")){
+
             redeemFragment(player, item);
             Functions.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
+
         }
     }
 
