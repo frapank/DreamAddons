@@ -13,8 +13,6 @@ import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
 import com.dream.dreamaddons.fragments.shop.commandListener.CommandGui;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.ClickListener;
-import com.dream.dreamaddons.itemstats.commands.TestCommand;
-import com.dream.dreamaddons.itemstats.listeners.KillEvent;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -22,7 +20,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -73,10 +70,12 @@ public final class DreamAddons extends JavaPlugin {
         boostXpPlayers = new LinkedList<>();
         inventorysForKeep = new HashMap<>();
         spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
-        Functions.removeAllArmorStand();
         this.fragmentManager = new FragmentManager(this);
         instance = this;
         prefix = this.getConfig().getString("general.prefix");
+
+        /* Other */
+        Functions.removeAllArmorStand();
         createFragmentsFile();
 
         /* Commands && events */
@@ -98,14 +97,12 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LeftClickEvent(), this);
         getServer().getPluginManager().registerEvents(new FileListener(this, this.fragmentManager), this);
         getServer().getPluginManager().registerEvents(new FragmentListener(this, this.fragmentManager), this);
-        getServer().getPluginManager().registerEvents(new KillEvent(), this);
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
         this.getCommand("frammento").setExecutor(new FrammentoCommand(this, new Fragment(this)));
         this.getCommand("frammenti").setExecutor(new MainCommand(this, this.fragmentManager));
-        this.getCommand("itemstats").setExecutor(new TestCommand());
         this.getCommand("blackgui").setExecutor(new CommandGui());
     }
 
