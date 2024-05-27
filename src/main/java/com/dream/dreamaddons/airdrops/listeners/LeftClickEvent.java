@@ -1,7 +1,8 @@
 package com.dream.dreamaddons.airdrops.listeners;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.Functions;
+import com.dream.dreamaddons.utils.Functions;
+import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.event.EventHandler;
@@ -17,7 +18,7 @@ public class LeftClickEvent implements Listener {
         ArmorStand armorStand = event.getRightClicked();
         if(armorStand.getCustomName() != null && armorStand.getCustomName().equals(DreamAddons.color(config.getString("name")))){
             Functions.executeCommand(event.getPlayer());
-            Functions.playExplosionEffect(armorStand.getLocation());
+            NmsUtils.playExplosionEffect(armorStand.getLocation());
             armorStand.remove();
             event.setCancelled(true);
         }

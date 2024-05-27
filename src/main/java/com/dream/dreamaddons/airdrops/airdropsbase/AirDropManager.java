@@ -1,13 +1,13 @@
 package com.dream.dreamaddons.airdrops.airdropsbase;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.Functions;
+import com.dream.dreamaddons.utils.Functions;
+import com.dream.dreamaddons.utils.NmsUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -85,7 +85,7 @@ public class AirDropManager {
 
                 );
 
-                Functions.spawnFireParticle(newLocation);
+                NmsUtils.spawnFireParticle(newLocation);
                 armorStand.teleport(newLocation);
             }
 

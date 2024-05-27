@@ -1,7 +1,8 @@
 package com.dream.dreamaddons.airdrops.listeners;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.Functions;
+import com.dream.dreamaddons.utils.Functions;
+import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
@@ -30,7 +31,7 @@ public class InteractionEvent implements Listener {
                 }
 
                 Functions.executeCommand(player);
-                Functions.playExplosionEffect(armorStand.getLocation());
+                NmsUtils.playExplosionEffect(armorStand.getLocation());
                 armorStand.remove();
             }
         }

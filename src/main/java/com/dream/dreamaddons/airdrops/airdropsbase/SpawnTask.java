@@ -1,7 +1,7 @@
 package com.dream.dreamaddons.airdrops.airdropsbase;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.Functions;
+import com.dream.dreamaddons.utils.Functions;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;

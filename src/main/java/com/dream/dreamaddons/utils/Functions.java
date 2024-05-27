@@ -1,8 +1,9 @@
-package com.dream.dreamaddons;
+package com.dream.dreamaddons.utils;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.airdrops.airdropsbase.AirDropManager;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
+import com.dream.dreamaddons.utils.NmsUtils;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -81,14 +82,14 @@ public class Functions {
         if(randomNumber <= 3){
             Fragment frammento = new Fragment(DreamAddons.getInstance());
             player.getInventory().addItem(frammento.giveFragment(1));
-            sendActionBar(player, DreamAddons.color("&9Hai ottenuto 1 frammento"));
+            NmsUtils.sendActionBar(player, DreamAddons.color("&9Hai ottenuto 1 frammento"));
             return;
         }
 
         String str = config.getString("command-claim");
         str = str.replace("%player%", player.getName());
         Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
-        sendActionBar(player, DreamAddons.color("&9Hai ottenuto un pò di soldi"));
+        NmsUtils.sendActionBar(player, DreamAddons.color("&9Hai ottenuto un pò di soldi"));
     }
 
     public static void removeAllArmorStand(){
@@ -107,78 +108,5 @@ public class Functions {
         }
     }
 
-    public static void sendActionBar(Player player, String message) {
-        IChatBaseComponent chatComponent = new ChatComponentText(message);
-        PacketPlayOutChat packet = new PacketPlayOutChat(chatComponent, (byte) 2);
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
-    }
 
-    public static void playExplosionEffect(Location location) {
-
-        if(config.getString("claim-effect").isEmpty()){
-            return;
-        }
-
-        try {
-            EnumParticle paricella = EnumParticle.valueOf(config.getString("claim-effect"));
-            float x = (float) location.getX();
-            float y = (float) location.getY();
-            float z = (float) location.getZ();
-            float offsetX = 0;
-            float offsetY = 0;
-            float offsetZ = 0;
-            float speed = 1;
-            int count = 100;
-
-
-            PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
-                    paricella,
-                    true,
-                    x, y, z,
-                    offsetX, offsetY, offsetZ,
-                    speed,
-                    count
-            );
-
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
-            }
-        } catch (Exception e){
-            DreamAddons.getInstance().getLogger().warning("Error in claim-effect config:" + e);
-        }
-    }
-
-    public static void spawnFireParticle(Location location) {
-
-        if(config.getString("particel-up").isEmpty()){
-            return;
-        }
-
-        try {
-            EnumParticle paricella = EnumParticle.valueOf(config.getString("particel-up"));
-            float x = (float) location.getX();
-            float y = (float) location.getY();
-            float z = (float) location.getZ();
-            float offsetX = 0;
-            float offsetY = 0;
-            float offsetZ = 0;
-            float speed = 0;
-            int count = 1;
-
-            PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
-                    paricella,
-                    true,
-                    x, y, z,
-                    offsetX, offsetY, offsetZ,
-                    speed,
-                    count
-            );
-
-            for (Player user : Bukkit.getOnlinePlayers()) {
-                ((CraftPlayer) user).getHandle().playerConnection.sendPacket(packet);
-            }
-        } catch (Exception e){
-            DreamAddons.getInstance().getLogger().warning("Error in particel-up config:" + e);
-        }
-    }
 }
