@@ -17,12 +17,15 @@ import com.dream.dreamaddons.fragments.shop.shoplisteners.DeathEvent;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.KeepInventoryListener;
 import com.dream.dreamaddons.utils.Functions;
 import lombok.Getter;
+import net.luckperms.api.LuckPerms;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -59,6 +62,7 @@ public final class DreamAddons extends JavaPlugin {
     @Override
     public void onEnable() {
 
+
         /* Base */
         getLogger().warning("<--------------------->");
         getLogger().warning(" Airdrop plugin stared ");
@@ -86,6 +90,14 @@ public final class DreamAddons extends JavaPlugin {
         /* Commands && events */
         registerCommands();
         registerListeners();
+
+        /* LuckPerms */
+        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+        if (provider != null) {
+            LuckPerms api = provider.getProvider();
+
+        }
+
     }
 
     @Override

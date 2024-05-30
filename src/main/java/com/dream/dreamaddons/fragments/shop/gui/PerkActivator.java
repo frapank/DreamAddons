@@ -30,12 +30,13 @@ public class PerkActivator {
     }
 
     public static void activateCriticalBoost(Player player){
-        player.sendMessage("prova del attivazione");
         if(!DreamAddons.getCriticalBoostplayers().contains(player.getUniqueId()) && Functions.getFragments(player) >= 10){
 
-            player.sendMessage("Hai attivato il perk");
             Functions.setFragments(player, Functions.getFragments(player) - 10);
+            player.sendMessage(DreamAddons.color("&eHai aquistato il booster critical!"));
             DreamAddons.getCriticalBoostplayers().add(player.getUniqueId());
+            return;
         }
+        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
     }
 }

@@ -15,15 +15,13 @@ public class CriticalListener implements Listener {
 
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event){
-
         if(event.getEntity() instanceof Player && event.getDamager() instanceof Player){
-
             Player damager = (Player) event.getDamager();
 
             Random random = new Random();
             int randomNumber = random.nextInt(10) + 1;
 
-            if(randomNumber <= 2 && DreamAddons.getCriticalBoostplayers().contains(damager)){
+            if(randomNumber <= 10 && DreamAddons.getCriticalBoostplayers().contains(damager.getUniqueId())){
                 NmsUtils.sendActionBar(damager, DreamAddons.color("&cDanno critico!"));
                 Double oldDamage = event.getDamage();
                 Double newDamage = oldDamage + 1.5;
