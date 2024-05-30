@@ -22,8 +22,9 @@ public class ShopGui {
 
         Inventory gui = Bukkit.createInventory(player,27, "Black Market");
 
-        gui.setItem(11, new ItemStack(keepInventoryItemStack()));
+        gui.setItem(10, new ItemStack(keepInventoryItemStack()));
         gui.setItem(13, new ItemStack(doubleMoneyItemStack()));
+        gui.setItem(16, new ItemStack(criticalBoost()));
 
         player.openInventory(gui);
     }

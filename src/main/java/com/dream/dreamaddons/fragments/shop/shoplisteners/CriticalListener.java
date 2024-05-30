@@ -23,7 +23,7 @@ public class CriticalListener implements Listener {
             Random random = new Random();
             int randomNumber = random.nextInt(10) + 1;
 
-            if(randomNumber <= 2){
+            if(randomNumber <= 2 && DreamAddons.getCriticalBoostplayers().contains(damager)){
                 NmsUtils.sendActionBar(damager, DreamAddons.color("&cDanno critico!"));
                 Double oldDamage = event.getDamage();
                 Double newDamage = oldDamage + 1.5;
