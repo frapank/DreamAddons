@@ -12,6 +12,9 @@ import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
 import com.dream.dreamaddons.fragments.shop.commandListener.CommandGui;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.ClickListener;
+import com.dream.dreamaddons.fragments.shop.shoplisteners.CriticalListener;
+import com.dream.dreamaddons.fragments.shop.shoplisteners.DeathEvent;
+import com.dream.dreamaddons.fragments.shop.shoplisteners.KeepInventoryListener;
 import com.dream.dreamaddons.utils.Functions;
 import lombok.Getter;
 import org.bukkit.ChatColor;
@@ -100,6 +103,9 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FileListener(this), this);
         getServer().getPluginManager().registerEvents(new FragmentListener(this), this);
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
+        getServer().getPluginManager().registerEvents(new CriticalListener(), this);
+        getServer().getPluginManager().registerEvents(new DeathEvent(), this);
+        getServer().getPluginManager().registerEvents(new KeepInventoryListener(), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
