@@ -1,7 +1,6 @@
 package com.dream.dreamaddons.airdrops.airdropsbase;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.utils.Functions;
 import com.dream.dreamaddons.utils.NmsUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
