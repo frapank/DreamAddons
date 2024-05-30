@@ -1,7 +1,7 @@
 package com.dream.dreamaddons.fragments.listeners;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.fragments.Storage.FragmentManager;
+import com.dream.dreamaddons.utils.Functions;
 import com.dream.dreamaddons.utils.NmsUtils;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,6 @@ import java.util.List;
 public class FragmentListener implements Listener {
 
     private final DreamAddons plugin;
-    private final FragmentManager fragmentManager;
 
     @EventHandler
     public void onPlayerRedeem(PlayerInteractEvent event) {
@@ -50,7 +49,7 @@ public class FragmentListener implements Listener {
         Player player = event.getPlayer();
         Material block = event.getBlock().getType();
         if (block.equals(Material.SKULL_ITEM)) {
-            fragmentManager.addFragments(player, player.getItemInHand().getAmount());
+            Functions.addFragments(player, player.getItemInHand().getAmount());
             player.getInventory().removeItem(player.getItemInHand());
             NmsUtils.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
             if(!player.hasPermission("dream.placefragments")){
@@ -72,7 +71,7 @@ public class FragmentListener implements Listener {
 
         if (configDisplayName.equals(itemDisplayName) && configLore.equals(itemLore)) {
             int amount = item.getAmount();
-            fragmentManager.addFragments(player, amount);
+            Functions.addFragments(player, amount);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.fragments-redeemed").replace("%amount%", String.valueOf(amount))));
             player.getInventory().removeItem(item);
         }

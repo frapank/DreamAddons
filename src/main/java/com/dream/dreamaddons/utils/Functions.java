@@ -108,5 +108,21 @@ public class Functions {
         }
     }
 
+    public static int getFragments(Player player){
+        return DreamAddons.getInstance().getFragmentsConfig().getInt(player.getName(), 0);
+    }
+
+    public static void setFragments(Player player, int amount){
+        DreamAddons.getInstance().getFragmentsConfig().set(player.getName(), amount);
+        DreamAddons.getInstance().saveFragmentsConfig();
+    }
+
+    public static void addFragments(Player player, int amount){
+        int current = getFragments(player);
+        setFragments(player, current + amount);
+    }
+
+
+
 
 }

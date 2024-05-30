@@ -1,7 +1,7 @@
 package com.dream.dreamaddons.fragments.commands;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.fragments.Storage.FragmentManager;
+import com.dream.dreamaddons.utils.Functions;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,7 +15,6 @@ import java.util.List;
 public class MainCommand implements CommandExecutor {
 
     private final DreamAddons plugin;
-    private final FragmentManager fragmentManager;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -52,7 +51,7 @@ public class MainCommand implements CommandExecutor {
                 Player targetPlayer = plugin.getServer().getPlayer(targetName);
 
                 if (targetPlayer != null) {
-                    int fragments = fragmentManager.getFragments(targetPlayer);
+                    int fragments = Functions.getFragments(targetPlayer);
 
                     if (targetPlayer.equals(sender)) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-fragments-self")).replace("%amount%", fragments + ""));
@@ -72,7 +71,7 @@ public class MainCommand implements CommandExecutor {
                         Player targetPlayer = plugin.getServer().getPlayer(targetName);
 
                         if (targetPlayer != null) {
-                            fragmentManager.setFragments(targetPlayer, 0);
+                            Functions.setFragments(targetPlayer, 0);
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragments-resetted").replace("%player%", targetName)));
                         } else {
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-not-found")).replace("player%", targetName));
@@ -102,7 +101,7 @@ public class MainCommand implements CommandExecutor {
                                 return true;
                             }
 
-                            fragmentManager.setFragments(targetPlayer, amount);
+                            Functions.setFragments(targetPlayer, amount);
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragments-setted").replace("%player%", targetName).replace("%amount%", amount + "")));
                         } else {
                             player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));

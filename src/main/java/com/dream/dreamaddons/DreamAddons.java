@@ -5,7 +5,6 @@ import com.dream.dreamaddons.airdrops.airdropsbase.SpawnTask;
 import com.dream.dreamaddons.airdrops.commands.Command;
 import com.dream.dreamaddons.airdrops.listeners.InteractionEvent;
 import com.dream.dreamaddons.airdrops.listeners.LeftClickEvent;
-import com.dream.dreamaddons.fragments.Storage.FragmentManager;
 import com.dream.dreamaddons.fragments.commands.FrammentoCommand;
 import com.dream.dreamaddons.fragments.commands.MainCommand;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
@@ -26,6 +25,7 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.UUID;
@@ -40,15 +40,16 @@ public final class DreamAddons extends JavaPlugin {
     @Getter
     private static HashMap<String, Location> spawns;
     @Getter
-    private static LinkedList<UUID> keepInventoryPlayers;
+    private static ArrayList<UUID> keepInventoryPlayers;
     @Getter
-    private static LinkedList<UUID> boostXpPlayers;
+    private static ArrayList<UUID> boostMoneyPlayers;
+    @Getter
+    private static ArrayList<UUID> criticalBoostplayers;
     @Getter
     private static HashMap<Player, Inventory> inventorysForKeep;
     private ConfigManager configManager;
     private BukkitTask spawnerTask;
     private File fragmentsFile;
-    private FragmentManager fragmentManager;
     public String prefix;
 
 
@@ -59,7 +60,7 @@ public final class DreamAddons extends JavaPlugin {
         getLogger().warning("<--------------------->");
         getLogger().warning(" Airdrop plugin stared ");
         getLogger().warning("                       ");
-        getLogger().warning("   By Gourmet/Fiscalo  ");
+        getLogger().warning("  By Gourmet/Fiscalo   ");
         getLogger().warning("<--------------------->");
         saveDefaultConfig();
 
@@ -67,11 +68,11 @@ public final class DreamAddons extends JavaPlugin {
         instance = this;
         spawns = new HashMap<>();
         configManager = new ConfigManager();
-        keepInventoryPlayers = new LinkedList<>();
-        boostXpPlayers = new LinkedList<>();
+        keepInventoryPlayers = new ArrayList<>();
+        boostMoneyPlayers = new ArrayList<>();
+        criticalBoostplayers = new ArrayList<>();
         inventorysForKeep = new HashMap<>();
         spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
-        this.fragmentManager = new FragmentManager(this);
         instance = this;
         prefix = this.getConfig().getString("general.prefix");
 
@@ -96,14 +97,14 @@ public final class DreamAddons extends JavaPlugin {
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new InteractionEvent(), this);
         getServer().getPluginManager().registerEvents(new LeftClickEvent(), this);
-        getServer().getPluginManager().registerEvents(new FileListener(this, this.fragmentManager), this);
-        getServer().getPluginManager().registerEvents(new FragmentListener(this, this.fragmentManager), this);
+        getServer().getPluginManager().registerEvents(new FileListener(this), this);
+        getServer().getPluginManager().registerEvents(new FragmentListener(this), this);
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
         this.getCommand("frammento").setExecutor(new FrammentoCommand(this, new Fragment(this)));
-        this.getCommand("frammenti").setExecutor(new MainCommand(this, this.fragmentManager));
+        this.getCommand("frammenti").setExecutor(new MainCommand(this));
         this.getCommand("blackgui").setExecutor(new CommandGui());
     }
 

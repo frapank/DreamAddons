@@ -1,7 +1,7 @@
 package com.dream.dreamaddons.fragments.listeners;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.fragments.Storage.FragmentManager;
+import com.dream.dreamaddons.utils.Functions;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +12,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class FileListener implements Listener {
 
     private final DreamAddons plugin;
-    private final FragmentManager fragmentManager;
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
@@ -21,7 +20,7 @@ public class FileListener implements Listener {
 
         if (!plugin.getFragmentsConfig().contains(playerName)) {
             plugin.getLogger().info("Il giocatore " + playerName + " è stato registrato nel file frammenti.yml");
-            fragmentManager.setFragments(player, 0);
+            Functions.setFragments(player, 0);
         }
     }
 }

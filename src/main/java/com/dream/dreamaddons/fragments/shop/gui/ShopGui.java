@@ -95,5 +95,43 @@ public class ShopGui {
         return skull;
     }
 
+    /*
+        Avra con un random una possibilà d'infliggere
+        più danno
+     */
+    private static ItemStack criticalBoost(){
+
+
+
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+        String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzhjZDQ1MWQwODgzN2M2YWVlYjA4YjJhY2Q3ZDNkNzQ3YTNmOTY2MGUyNWZlZDY5Yzg3ZGQ4YTY2OGU1YTdiOCJ9fX0=";
+        profile.getProperties().put("textures", new Property("textures", value));
+
+        try {
+            Field profileField = meta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(meta, profile);
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+            e.printStackTrace();
+        }
+
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        lore.add(DreamAddons.color("&8| &7Grazie a questo perk"));
+        lore.add(DreamAddons.color("&8| &7avrete una possibiltà di"));
+        lore.add(DreamAddons.color("&8| &7fare più danno"));
+        lore.add("");
+        lore.add(DreamAddons.color("&8» &eClicca per aprire"));
+        lore.add("");
+
+        meta.setDisplayName(DreamAddons.color("&cCritical Boost"));
+        meta.setLore(lore);
+
+        skull.setItemMeta(meta);
+        return skull;
+    }
+
 
 }
