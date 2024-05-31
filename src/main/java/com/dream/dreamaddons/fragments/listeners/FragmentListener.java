@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,18 +30,34 @@ public class FragmentListener implements Listener {
 
     @EventHandler
     public void onPlayerRedeem(PlayerInteractEvent event) {
+        FileConfiguration config = plugin.getConfig();
         Player player = event.getPlayer();
         Action action = event.getAction();
-        ItemStack item = event.getItem();
+        ItemStack item = player.getItemInHand();
+
+        if (item == null || !item.hasItemMeta() || !item.getItemMeta().hasDisplayName()) {
+            return;
+        }
+
         String itemName = item.getItemMeta().getDisplayName();
+        String strippedItemName = ChatColor.stripColor(itemName);
+        String configuredName = config.getString("fragments.display-name");
+        String strippedConfiguredName = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', configuredName));
 
-        if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)
-                && item != null && item.hasItemMeta() &&
-                itemName.equalsIgnoreCase("fragments.display-name")){
+        player.sendMessage("redeem richiamato");
+        player.sendMessage("Item Display Name: " + itemName);
+        player.sendMessage("Configured Display Name: " + configuredName);
+        player.sendMessage("Stripped Configured Name: " + strippedConfiguredName);
 
-            redeemFragment(player, item);
-            NmsUtils.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
-
+        if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) && item.hasItemMeta()) {
+            player.sendMessage("entrato nell'if1");
+            if (strippedItemName.equalsIgnoreCase(strippedConfiguredName)) {
+                player.sendMessage("Entrato nell'if2");
+                redeemFragment(player, item);
+                NmsUtils.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
+            } else {
+                player.sendMessage("Item name does not match the configured name.");
+            }
         }
     }
 
@@ -63,7 +80,7 @@ public class FragmentListener implements Listener {
         String itemDisplayName = itemMeta.getDisplayName();
         List<String> itemLore = itemMeta.getLore();
 
-        String configDisplayName = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fragments.display-name"));
+        String configDisplayName = DreamAddons.color(plugin.getConfig().getString("fragments.display-name"));
         List<String> configLore = plugin.getConfig().getStringList("fragments.lore");
         for (int i = 0; i < configLore.size(); i++) {
             configLore.set(i, ChatColor.translateAlternateColorCodes('&', configLore.get(i)));
@@ -72,14 +89,14 @@ public class FragmentListener implements Listener {
         if (configDisplayName.equals(itemDisplayName) && configLore.equals(itemLore)) {
             int amount = item.getAmount();
             Functions.addFragments(player, amount);
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.fragments-redeemed").replace("%amount%", String.valueOf(amount))));
+            player.sendMessage(DreamAddons.color(plugin.getConfig().getString("messages.fragments-redeemed").replace("%amount%", String.valueOf(amount))));
             player.getInventory().removeItem(item);
         }
     }
 
     public void removeAllFragments(Player player) {
         Inventory inventory = player.getInventory();
-        String configDisplayName = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fragments.display-name"));
+        String configDisplayName = DreamAddons.color(plugin.getConfig().getString("fragments.display-name"));
         List<String> configLore = plugin.getConfig().getStringList("fragments.lore");
         for (int i = 0; i < configLore.size(); i++) {
             configLore.set(i, ChatColor.translateAlternateColorCodes('&', configLore.get(i)));
