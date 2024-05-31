@@ -44,19 +44,17 @@ public class FragmentListener implements Listener {
         String configuredName = config.getString("fragments.display-name");
         String strippedConfiguredName = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', configuredName));
 
-        player.sendMessage("redeem richiamato");
-        player.sendMessage("Item Display Name: " + itemName);
-        player.sendMessage("Configured Display Name: " + configuredName);
-        player.sendMessage("Stripped Configured Name: " + strippedConfiguredName);
+//        player.sendMessage("redeem richiamato");
+//        player.sendMessage("Item Display Name: " + itemName);
+//        player.sendMessage("Configured Display Name: " + configuredName);
+//        player.sendMessage("Stripped Configured Name: " + strippedConfiguredName);
 
         if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) && item.hasItemMeta()) {
-            player.sendMessage("entrato nell'if1");
+//            player.sendMessage("entrato nell'if1");
             if (strippedItemName.equalsIgnoreCase(strippedConfiguredName)) {
-                player.sendMessage("Entrato nell'if2");
+//                player.sendMessage("Entrato nell'if2");
                 redeemFragment(player, item);
                 NmsUtils.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
-            } else {
-                player.sendMessage("Item name does not match the configured name.");
             }
         }
     }
