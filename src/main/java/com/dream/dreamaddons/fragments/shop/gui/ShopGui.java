@@ -1,6 +1,7 @@
 package com.dream.dreamaddons.fragments.shop.gui;
 
 import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.utils.Functions;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.Bukkit;
@@ -47,16 +48,8 @@ public class ShopGui {
             e.printStackTrace();
         }
 
-        List<String> lore = new ArrayList<>();
-        lore.add("");
-        lore.add(DreamAddons.color("&8| &7La Keep Inventory sarà"));
-        lore.add(DreamAddons.color("&8| &7rimosso alla prossima morte o riavvio"));
-        lore.add("");
-        lore.add(DreamAddons.color("&8» &eClicca per aprire"));
-        lore.add("");
-
+        Functions.constructLore("keep-inv.lore", meta);
         meta.setDisplayName(DreamAddons.color("&6Keep Inventory"));
-        meta.setLore(lore);
 
         skull.setItemMeta(meta);
         return skull;
@@ -81,16 +74,8 @@ public class ShopGui {
             e.printStackTrace();
         }
 
-        List<String> lore = new ArrayList<>();
-        lore.add("");
-        lore.add(DreamAddons.color("&8| &7Il Boost Money sarà"));
-        lore.add(DreamAddons.color("&8| &7rimosso alla prossima morte o riavvio"));
-        lore.add("");
-        lore.add(DreamAddons.color("&8» &eClicca per aprire"));
-        lore.add("");
-
+        Functions.constructLore("money-boost.lore", meta);
         meta.setDisplayName(DreamAddons.color("&eBoost Money"));
-        meta.setLore(lore);
 
         skull.setItemMeta(meta);
         return skull;
@@ -118,17 +103,8 @@ public class ShopGui {
             e.printStackTrace();
         }
 
-        List<String> lore = new ArrayList<>();
-        lore.add("");
-        lore.add(DreamAddons.color("&8| &7Grazie a questo perk"));
-        lore.add(DreamAddons.color("&8| &7avrete una possibiltà di"));
-        lore.add(DreamAddons.color("&8| &7fare più danno"));
-        lore.add("");
-        lore.add(DreamAddons.color("&8» &eClicca per aprire"));
-        lore.add("");
-
+        Functions.constructLore("critical-boost.lore", meta);
         meta.setDisplayName(DreamAddons.color("&cCritical Boost"));
-        meta.setLore(lore);
 
         skull.setItemMeta(meta);
         return skull;

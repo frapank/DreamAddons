@@ -123,7 +123,7 @@ public final class DreamAddons extends JavaPlugin {
         this.getCommand("airdrop").setExecutor(new Command());
         this.getCommand("frammento").setExecutor(new FrammentoCommand(this, new Fragment(this)));
         this.getCommand("frammenti").setExecutor(new MainCommand(this));
-        this.getCommand("blackgui").setExecutor(new CommandGui());
+        this.getCommand("blackmarketgui").setExecutor(new CommandGui());
     }
 
     /* Config fragments */

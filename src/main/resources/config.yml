@@ -108,3 +108,32 @@ messages:
   invalid-amount: "&cL'importo inserito deve essere un numero intero."
   fragments-redeemed: "&aHai riscattato un frammento."
 
+############################
+#       Black Market       #
+############################
+
+
+critical-boost:
+  display-name: "&cCritical Boost"
+  lore:
+    - "&8| &7Grazie a questo perk"
+    - "&8| &7avrete una possibiltà di"
+    - "&8| &7fare più danno"
+    - " "
+    - "&8» &eClicca per aprire"
+
+money-boost:
+  display-name: "&eBoost Money"
+  lore:
+    - "&8| &7Il Boost Money sarà"
+    - "&8| &7rimosso alla prossima morte o riavvio"
+    - " "
+    - "&8» &eClicca per aprire"
+
+keep-inv:
+  display-name: "&6Keep Inventory"
+  lore:
+    - "&8| &7La Keep Inventory sarà"
+    - "&8| &7rimosso alla prossima morte o riavvio"
+    - " "
+    - "&8» &eClicca per aprire"

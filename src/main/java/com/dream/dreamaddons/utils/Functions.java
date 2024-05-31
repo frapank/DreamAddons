@@ -11,7 +11,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -120,6 +122,14 @@ public class Functions {
     public static void addFragments(Player player, int amount){
         int current = getFragments(player);
         setFragments(player, current + amount);
+    }
+
+    public static void constructLore(String path, ItemMeta item){
+
+        List<String> loreList = config.getStringList(path);
+        ArrayList<String> lore = new ArrayList<>(loreList);
+        item.setLore(lore);
+
     }
 
 
