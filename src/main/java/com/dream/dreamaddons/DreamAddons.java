@@ -5,6 +5,7 @@ import com.dream.dreamaddons.airdrops.airdropsbase.SpawnTask;
 import com.dream.dreamaddons.airdrops.commands.Command;
 import com.dream.dreamaddons.airdrops.listeners.InteractionEvent;
 import com.dream.dreamaddons.airdrops.listeners.LeftClickEvent;
+import com.dream.dreamaddons.extra.DamagerIndicatorListener;
 import com.dream.dreamaddons.fragments.commands.FrammentoCommand;
 import com.dream.dreamaddons.fragments.commands.MainCommand;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
@@ -118,6 +119,7 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CriticalListener(), this);
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         getServer().getPluginManager().registerEvents(new KeepInventoryListener(), this);
+        getServer().getPluginManager().registerEvents(new DamagerIndicatorListener(), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new Command());
