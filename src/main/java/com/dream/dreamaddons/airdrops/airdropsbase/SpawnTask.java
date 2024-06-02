@@ -25,7 +25,7 @@ public class SpawnTask extends BukkitRunnable {
             int spawnCount = Math.min(config.getInt("spawn-count"), locations.size());
             for (int i = 0; i < spawnCount; i++) {
                 Location location = locations.get(i);
-                AirDropManager.spawnDrop(location);
+                AirDrop.spawnDrop(location);
             }
         }catch(Exception e){
             DreamAddons.getInstance().getLogger().warning("spawn-count config string error :" + e);

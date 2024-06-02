@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class DamagerIndicatorListener implements Listener {
+public class DamagerIndicator implements Listener {
 
     private static FileConfiguration config = DreamAddons.getInstance().getConfig();
     @EventHandler

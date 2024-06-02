@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class Command implements CommandExecutor {
+public class AirDropCommand implements CommandExecutor {
 
     private static FileConfiguration config = DreamAddons.getInstance().getConfig();
 

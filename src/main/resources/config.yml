@@ -74,7 +74,7 @@ general:
     - "&7&m     [&f&lDREAM&9&lADDONS&7&m]     "
     - "&f/frammenti &7• &fVisualizza questo messaggio."
     - "&f/frammenti (player) &7• &fVisualizza i frammenti posseduti da un giocatore."
-    - "&f/frammento &7• &fRiscatta frammento in un oggetto fisico."
+    - "&fframmentodebug &7• &fRiscatta frammento in un oggetto fisico."
     - "&f/frammenti imposta (player) (valore) &7• &fImposta i frammenti di un giocatore a un determinato valore."
     - "&f/frammenti azzera (player) &7• &fAzzera i frammenti di un giocatore."
     - "&7&m                                       "

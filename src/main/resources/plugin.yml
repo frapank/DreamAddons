@@ -9,13 +9,16 @@ commands:
     description: comando principale.
   frammento:
     usage: /frammento
-    description: comando per ottenere un frammento.
+    description: comando principale.
+  frammentidebug:
+    usage: /frammentidebug
+    description: ottenere un frammento.
   airdrop:
     usage: /airdrop
     description: airdrop command
   itemstats:
     usage: /itemstats
-    description: Test command
+    description: test command
   blackmarketgui:
     usage: /blackgui
-    description: Test gui
+    description: test gui

@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 
-public class InteractionEvent implements Listener {
+public class RightClickClaim implements Listener {
 
     private static FileConfiguration config = DreamAddons.getInstance().getConfig();
 

@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class MainCommand implements CommandExecutor {
+public class FragmentMainCommand implements CommandExecutor {
 
     private final DreamAddons plugin;
 

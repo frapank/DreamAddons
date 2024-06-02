@@ -1,14 +1,11 @@
 package com.dream.dreamaddons.utils;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.airdrops.airdropsbase.AirDropManager;
+import com.dream.dreamaddons.airdrops.airdropsbase.AirDrop;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
-import com.dream.dreamaddons.utils.NmsUtils;
-import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -34,7 +31,7 @@ public class Functions {
                 player.getLocation().getY(),
                 player.getLocation().getZ()
         );
-        AirDropManager.spawnDrop(loc);
+        AirDrop.spawnDrop(loc);
         player.sendMessage(DreamAddons.color(config.getString("general.prefix") + config.getString("spawn-message")));
     }
 

@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 
-public class LeftClickEvent implements Listener {
+public class LeftClickClaim implements Listener {
 
     FileConfiguration config = DreamAddons.getInstance().getConfig();
 

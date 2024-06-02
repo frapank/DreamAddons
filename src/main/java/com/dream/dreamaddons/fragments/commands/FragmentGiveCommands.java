@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @RequiredArgsConstructor
-public class FrammentoCommand implements CommandExecutor {
+public class FragmentGiveCommands implements CommandExecutor {
 
     private final DreamAddons plugin;
     private final Fragment fragment;

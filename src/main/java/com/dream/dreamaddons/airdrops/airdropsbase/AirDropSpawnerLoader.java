@@ -6,12 +6,12 @@ import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
-public class ConfigManager {
+public class AirDropSpawnerLoader {
 
     private static FileConfiguration config;
 
     /* Setup config spawners */
-    public ConfigManager(){
+    public AirDropSpawnerLoader(){
 
         config = DreamAddons.getInstance().getConfig();
         ConfigurationSection locationsSection = config.getConfigurationSection("locations");

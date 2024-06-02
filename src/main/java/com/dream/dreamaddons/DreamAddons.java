@@ -1,17 +1,17 @@
 package com.dream.dreamaddons;
 
-import com.dream.dreamaddons.airdrops.airdropsbase.ConfigManager;
+import com.dream.dreamaddons.airdrops.airdropsbase.AirDropSpawnerLoader;
 import com.dream.dreamaddons.airdrops.airdropsbase.SpawnTask;
-import com.dream.dreamaddons.airdrops.commands.Command;
-import com.dream.dreamaddons.airdrops.listeners.InteractionEvent;
-import com.dream.dreamaddons.airdrops.listeners.LeftClickEvent;
-import com.dream.dreamaddons.extra.DamagerIndicatorListener;
-import com.dream.dreamaddons.fragments.commands.FrammentoCommand;
-import com.dream.dreamaddons.fragments.commands.MainCommand;
+import com.dream.dreamaddons.airdrops.commands.AirDropCommand;
+import com.dream.dreamaddons.airdrops.listeners.RightClickClaim;
+import com.dream.dreamaddons.airdrops.listeners.LeftClickClaim;
+import com.dream.dreamaddons.extra.DamagerIndicator;
+import com.dream.dreamaddons.fragments.commands.FragmentGiveCommands;
+import com.dream.dreamaddons.fragments.commands.FragmentMainCommand;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
-import com.dream.dreamaddons.fragments.shop.commandListener.CommandGui;
+import com.dream.dreamaddons.fragments.shop.commandListener.CommandBlackMarketGui;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.ClickListener;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.CriticalListener;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.DeathEvent;
@@ -34,7 +34,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -54,7 +53,7 @@ public final class DreamAddons extends JavaPlugin {
     private static ArrayList<UUID> criticalBoostplayers;
     @Getter
     private static HashMap<Player, Inventory> inventorysForKeep;
-    private ConfigManager configManager;
+    private AirDropSpawnerLoader configManager;
     private BukkitTask spawnerTask;
     private File fragmentsFile;
     public String prefix;
@@ -75,7 +74,7 @@ public final class DreamAddons extends JavaPlugin {
         /* Initialize */
         instance = this;
         spawns = new HashMap<>();
-        configManager = new ConfigManager();
+        configManager = new AirDropSpawnerLoader();
         keepInventoryPlayers = new ArrayList<>();
         boostMoneyPlayers = new ArrayList<>();
         criticalBoostplayers = new ArrayList<>();
@@ -111,21 +110,22 @@ public final class DreamAddons extends JavaPlugin {
 
     /*Command & events*/
     private void registerListeners() {
-        getServer().getPluginManager().registerEvents(new InteractionEvent(), this);
-        getServer().getPluginManager().registerEvents(new LeftClickEvent(), this);
+        getServer().getPluginManager().registerEvents(new RightClickClaim(), this);
+        getServer().getPluginManager().registerEvents(new LeftClickClaim(), this);
         getServer().getPluginManager().registerEvents(new FileListener(this), this);
         getServer().getPluginManager().registerEvents(new FragmentListener(this), this);
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
         getServer().getPluginManager().registerEvents(new CriticalListener(), this);
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         getServer().getPluginManager().registerEvents(new KeepInventoryListener(), this);
-        getServer().getPluginManager().registerEvents(new DamagerIndicatorListener(), this);
+        getServer().getPluginManager().registerEvents(new DamagerIndicator(), this);
     }
     private void registerCommands() {
-        this.getCommand("airdrop").setExecutor(new Command());
-        this.getCommand("frammento").setExecutor(new FrammentoCommand(this, new Fragment(this)));
-        this.getCommand("frammenti").setExecutor(new MainCommand(this));
-        this.getCommand("blackmarketgui").setExecutor(new CommandGui());
+        this.getCommand("airdrop").setExecutor(new AirDropCommand());
+        this.getCommand("frammentidebug").setExecutor(new FragmentGiveCommands(this, new Fragment(this)));
+        this.getCommand("frammenti").setExecutor(new FragmentMainCommand(this));
+        this.getCommand("frammento").setExecutor(new FragmentMainCommand(this));
+        this.getCommand("blackmarketgui").setExecutor(new CommandBlackMarketGui());
     }
 
     /* Config fragments */
