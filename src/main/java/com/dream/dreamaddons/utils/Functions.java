@@ -43,7 +43,7 @@ public class Functions {
         for(String str : DreamAddons.getSpawns().keySet()){
             String message = config.getString("list-spawn-message");
             message = message.replace("%spawn-id%", str);
-            player.sendMessage(config.getString("general.prefix") + DreamAddons.color(message));
+            player.sendMessage(DreamAddons.color(message));
         }
     }
 

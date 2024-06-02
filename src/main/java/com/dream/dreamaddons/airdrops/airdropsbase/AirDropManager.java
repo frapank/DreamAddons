@@ -77,9 +77,9 @@ public class AirDropManager {
                 Location newLocation = new Location(
                         armorStand.getWorld(),
                         armorStand.getLocation().getX(),
-                        armorStand.getLocation().getY() - 0.4,
+                        armorStand.getLocation().getY() - config.getDouble("airdebug-down"),
                         armorStand.getLocation().getZ(),
-                        (float) (armorStand.getLocation().getYaw() + 9),
+                        (float) (armorStand.getLocation().getYaw() + config.getDouble("airdebug-rotation")),
                         armorStand.getLocation().getPitch()
 
                 );
@@ -88,7 +88,7 @@ public class AirDropManager {
                 armorStand.teleport(newLocation);
             }
 
-        }.runTaskTimer(DreamAddons.getInstance(), 0, 3);
+        }.runTaskTimer(DreamAddons.getInstance(), 0, config.getInt("airdebug-period"));
     }
 
     public static ItemStack skullItem(String id){

@@ -9,60 +9,57 @@
 
 
 
-############################
-#       AirDrops          #
-############################
+#AirDrops
 config-version: 1.0-BETA
 
 # General Settings
-name: "&bAirDrops"                              # AirDrop Name tag
-block: "DIAMOND_BLOCK"                          # Block used to represent the AirDrop
-skull-head: false                               # The head of the airdrop will be a skull
-skull-id: ""                                    # Skull id for the airdrop
-spawn-count: 3                                  # Set how may spawner will appear in seconds
-spawn-time: 1                                   # Count how many seconds apart they are generated
+name: "&bAirDrops"
+block: "DIAMOND_BLOCK"
+skull-head: false
+skull-id: ""
+spawn-count: 3
+spawn-time: 1
 
 # Sound Effects
-fall-sound: "NOTE_PLING"                        # Sound when the AirDrop falls
-end-sound: "LEVEL_UP"                           # Sound when the AirDrop lands
-claim-sound: "EXPLODE"                          # Sound when the AirDrop is claimed
+fall-sound: "NOTE_PLING"
+end-sound: "LEVEL_UP"
+claim-sound: "EXPLODE"
 
 # Particel Effects
-particel-up: "FLAME"                            # Particle appearing above the AirDrop
-claim-effect: "SMOKE_NORMAL"                     # Particle appearing when a player claim AirDrop
+particel-up: "FLAME"
+claim-effect: "SMOKE_NORMAL"
 
 # Gameplay Settings
-command-claim: "give %player% minecraft:apple"  # Command executed when a player claims the AirDrop
-world: "world"                                  # World in which AirDrops will be spawned
+command-claim: "give %player% minecraft:apple"
+world: "world"
 
 # Staff Messages
-spawn-message: "&eAirDrop spawned"              # Message when an AirDrop is spawned
-list-message: "&7The set spawners are:"         # Header for the list of AirDrops spawner
-list-spawn-message: "&9• &7%spawn-id%"          # Item in the list of AirDrops spawner
-spawn-already-exist: "&cSpawn already exists"   # Message when attempting to create an AirDrop at an existing ID
-spawn-added: "&aSpawn added"                    # Message when a new AirDrop location is added
-no-perm: "&cInsufficient permission"            # Message when a player does not have the necessary permissions
+spawn-message: "&eAirDrop spawned"
+list-message: "&7The set spawners are:"
+list-spawn-message: "&9• &7%spawn-id%"
+spawn-already-exist: "&cSpawn already exists"
+spawn-added: "&aSpawn added"
+no-perm: "&cInsufficient permission"
 
 
 # Help Message
 help-message:
-  - "&7AirDrops commands:"                      # Header for the help message
-  - "&9• &7/airdrop spawn"                      # Command to spawn an AirDrop
-  - "&9• &7/airdrop list"                       # Command to view the list of spawned AirDrops
-  - "&9• &7/airdrop create <number>"            # Command to add a new AirDrop location
+  - "&7AirDrops commands:"
+  - "&9• &7/airdrop spawn"
+  - "&9• &7/airdrop list"
+  - "&9• &7/airdrop create <number>"
+  - "&9• &7/airdrop reload"
+  - "&9• &7/airdrop debug"
 
-# Spawn Locations
-locations:                                      # AirDrop spawn locations will be automatically added here
+#Locations spawners
+locations:
   1:
     x: 0
     y: 0
     z: 0
 
 
-############################
-#       FRAGMENTS          #
-############################
-
+#Fragments
 general:
   prefix: "&f&lDREAM&9&lADDONS &7» "
   default-message:
@@ -108,11 +105,7 @@ messages:
   invalid-amount: "&cL'importo inserito deve essere un numero intero."
   fragments-redeemed: "&aHai riscattato un frammento."
 
-############################
-#       Black Market       #
-############################
-
-
+#Black Market
 critical-boost:
   display-name: "&cCritical Boost"
   lore:
@@ -137,3 +130,8 @@ keep-inv:
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
     - "&8» &eClicca per aprire"
+
+#Advanced
+airdebug-down: 0.6
+airdebug-rotation: 10
+airdebug-period: 5

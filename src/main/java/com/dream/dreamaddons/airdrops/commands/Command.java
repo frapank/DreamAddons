@@ -32,6 +32,13 @@ public class Command implements CommandExecutor {
                             config = DreamAddons.getInstance().getConfig();
                             player.sendMessage(DreamAddons.color("&eConfig Reloaded"));
                             return true;
+                        case "debug":
+                            player.sendMessage("down: " + config.getInt("airdebug-down"));
+                            player.sendMessage("rotation: " + config.getInt("airdebug-rotation"));
+                            player.sendMessage("period: " + config.getInt("airdebug-period"));
+                            player.sendMessage("count: " + config.getInt("spawn-count"));
+                            player.sendMessage("time: " + config.getInt("spawn-time"));
+                            return true;
                         default:
                             Functions.helpMessage(player);
                             return true;
