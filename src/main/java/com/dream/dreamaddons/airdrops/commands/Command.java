@@ -28,15 +28,31 @@ public class Command implements CommandExecutor {
 
             Player player = (Player) sender;
             if(player.hasPermission("dream.admin")){
-                switch(args.length){
-                    case 1:
-                        one(args, player);
+
+                /* Args = 1 */
+                if(args.length == 1){
+                    if(args[0].equalsIgnoreCase("spawn")){
+                        Functions.spawnAirDrop(player);
                         return true;
-                    case 2:
-                        two(args, player);
+                    }
+                    if(args[0].equalsIgnoreCase("list")){
+                        Functions.listAirDrop(player);
                         return true;
-                    default:
-                        Functions.helpMessage(player);
+                    }
+                    if(args[0].equalsIgnoreCase("reload")){
+                        try {
+                            config.save("config.yml");
+                            DreamAddons.getInstance().reloadConfig();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        player.sendMessage("&eConfig Reloaded");
+                    }
+                }
+
+                /* Args = 2 */
+                if(args.length == 2 && args[1].equalsIgnoreCase("create")){
+                    Functions.createAirDrop(player, args);
                 }
                 return true;
             }
@@ -48,41 +64,6 @@ public class Command implements CommandExecutor {
         DreamAddons.getInstance().getLogger().warning("Eseguibbile solo in game!");
 
         return false;
-    }
-
-
-    private static void one(String[] args, Player player){
-        switch(args[0]){
-
-            case "spawn":
-                Functions.spawnAirDrop(player);
-                return;
-            case "list":
-                Functions.listAirDrop(player);
-                return;
-            case "reload":
-                try {
-                    config.save("config.yml");
-                    DreamAddons.getInstance().reloadConfig();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                player.sendMessage("&eConfig Reloaded");
-
-
-
-            default:
-                Functions.listAirDrop(player);
-
-
-
-        }
-    }
-
-    private static void two(String[] args, Player player){
-        if(args[0].equalsIgnoreCase("create") && args.length == 2) {
-            Functions.createAirDrop(player, args);
-        }
     }
 
 
