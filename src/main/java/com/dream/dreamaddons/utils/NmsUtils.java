@@ -6,8 +6,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class NmsUtils {
 
@@ -86,6 +88,27 @@ public class NmsUtils {
         } catch (Exception e){
             DreamAddons.getInstance().getLogger().warning("Error in particel-up config:" + e);
         }
+    }
+
+    public void bossBarCreate(Player player, String name, int status, int timer) {
+        World mcWorld = ((CraftWorld) player.getWorld()).getHandle();
+        EntityEnderDragon enderDragon = new EntityEnderDragon(mcWorld);
+
+        enderDragon.setLocation(player.getLocation().getX(), player.getLocation().getY() - 100, player.getLocation().getZ(), 0, 0);
+        enderDragon.setCustomName(name);
+        enderDragon.setCustomNameVisible(true);
+        enderDragon.setHealth(enderDragon.getMaxHealth() * (status / 100.0f));
+
+        PacketPlayOutSpawnEntityLiving packet = new PacketPlayOutSpawnEntityLiving(enderDragon);
+        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                PacketPlayOutEntityDestroy destroyPacket = new PacketPlayOutEntityDestroy(enderDragon.getId());
+                ((CraftPlayer) player).getHandle().playerConnection.sendPacket(destroyPacket);
+            }
+        }.runTaskLater(DreamAddons.getInstance(), timer * 20L);
     }
 
 

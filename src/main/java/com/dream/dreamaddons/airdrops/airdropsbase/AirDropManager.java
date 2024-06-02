@@ -17,7 +17,8 @@ import java.util.UUID;
 public class AirDropManager {
 
     private static FileConfiguration config = DreamAddons.getInstance().getConfig();
-
+    private static  Location currentLocation;
+    private static Location newLocation;
     /* Initial spawn airdrop class */
     public static void spawnDrop(Location location){
         World world = location.getWorld();
@@ -46,7 +47,7 @@ public class AirDropManager {
             @Override
             public void run()
             {
-                Location currentLocation = new Location(
+                currentLocation = new Location(
                         armorStand.getWorld(),
                         armorStand.getLocation().getX(),
                         armorStand.getLocation().getY() + 0.3,
@@ -74,7 +75,7 @@ public class AirDropManager {
 
 
 
-                Location newLocation = new Location(
+                newLocation = new Location(
                         armorStand.getWorld(),
                         armorStand.getLocation().getX(),
                         armorStand.getLocation().getY() - config.getDouble("airdebug-down"),
