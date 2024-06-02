@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.io.IOException;
+
 
 public class Command implements CommandExecutor {
 
@@ -58,6 +60,17 @@ public class Command implements CommandExecutor {
             case "list":
                 Functions.listAirDrop(player);
                 return;
+            case "reload":
+                try {
+                    config.save("config.yml");
+                    DreamAddons.getInstance().reloadConfig();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                player.sendMessage("&eConfig Reloaded");
+
+
+
             default:
                 Functions.listAirDrop(player);
 

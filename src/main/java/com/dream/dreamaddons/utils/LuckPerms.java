@@ -1,16 +1,17 @@
 package com.dream.dreamaddons.utils;
 
+import com.dream.dreamaddons.DreamAddons;
+import com.mojang.authlib.yggdrasil.response.User;
+import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.node.Node;
+import net.luckperms.api.node.types.PermissionNode;
 import org.bukkit.entity.Player;
 
 public class LuckPerms {
 
-    /*
-        Inserire il metodo per
-        Mettere e togliere i permessi a un utente
 
-     */
 
-    public static void addPermission(String permission, Player target){
+    public void addPermission(String permission, Player target) {
 
     }
 
