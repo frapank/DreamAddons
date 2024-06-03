@@ -1,4 +1,4 @@
-<img align="left" alt="Java" width="1000px" style="padding-right:10px;" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F09%2Fb8%2F87%2F09b88727eebc9ef45993a18fc55062ba.jpg&f=1&nofb=1&ipt=25fa983024e9fba85d230c5087f7d76d69447d19f21e22c9fb0122de8336baed&ipo=images"/>
+
 
 # DreamAddons
 
