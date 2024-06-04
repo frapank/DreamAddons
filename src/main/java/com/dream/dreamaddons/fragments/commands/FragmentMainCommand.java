@@ -54,6 +54,7 @@ public class FragmentMainCommand implements CommandExecutor {
                 if(args[0].equalsIgnoreCase("self") && player.hasPermission("dreamfragments.admin")){
                     player.getInventory().addItem(Fragment.giveFragment(1));
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragment-item-given")));
+                    return true;
                 } else {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
                 }
