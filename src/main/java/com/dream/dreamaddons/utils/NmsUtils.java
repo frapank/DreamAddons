@@ -90,26 +90,5 @@ public class NmsUtils {
         }
     }
 
-    public void bossBarCreate(Player player, String name, int status, int timer) {
-        World mcWorld = ((CraftWorld) player.getWorld()).getHandle();
-        EntityEnderDragon enderDragon = new EntityEnderDragon(mcWorld);
-
-        enderDragon.setLocation(player.getLocation().getX(), player.getLocation().getY() - 100, player.getLocation().getZ(), 0, 0);
-        enderDragon.setCustomName(name);
-        enderDragon.setCustomNameVisible(true);
-        enderDragon.setHealth(enderDragon.getMaxHealth() * (status / 100.0f));
-
-        PacketPlayOutSpawnEntityLiving packet = new PacketPlayOutSpawnEntityLiving(enderDragon);
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                PacketPlayOutEntityDestroy destroyPacket = new PacketPlayOutEntityDestroy(enderDragon.getId());
-                ((CraftPlayer) player).getHandle().playerConnection.sendPacket(destroyPacket);
-            }
-        }.runTaskLater(DreamAddons.getInstance(), timer * 20L);
-    }
-
 
 }
