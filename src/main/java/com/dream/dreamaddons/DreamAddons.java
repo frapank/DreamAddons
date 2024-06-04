@@ -6,9 +6,7 @@ import com.dream.dreamaddons.airdrops.commands.AirDropCommand;
 import com.dream.dreamaddons.airdrops.listeners.RightClickClaim;
 import com.dream.dreamaddons.airdrops.listeners.LeftClickClaim;
 import com.dream.dreamaddons.extra.DamagerIndicator;
-import com.dream.dreamaddons.fragments.commands.FragmentGiveCommands;
 import com.dream.dreamaddons.fragments.commands.FragmentMainCommand;
-import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
 import com.dream.dreamaddons.fragments.shop.commandListener.CommandBlackMarketGui;
@@ -122,7 +120,6 @@ public final class DreamAddons extends JavaPlugin {
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new AirDropCommand());
-        this.getCommand("frammentidebug").setExecutor(new FragmentGiveCommands(this, new Fragment(this)));
         this.getCommand("frammenti").setExecutor(new FragmentMainCommand(this));
         this.getCommand("frammento").setExecutor(new FragmentMainCommand(this));
         this.getCommand("blackmarketgui").setExecutor(new CommandBlackMarketGui());

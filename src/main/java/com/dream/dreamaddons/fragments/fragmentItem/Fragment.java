@@ -23,7 +23,7 @@ public class Fragment {
 
     private final DreamAddons plugin;
 
-    public ItemStack giveFragment(int amount) {
+    public static ItemStack giveFragment(int amount) {
         ItemStack fragment = new ItemStack(Material.SKULL_ITEM, amount, (short) 3);
         SkullMeta meta = (SkullMeta) fragment.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), "");
@@ -38,12 +38,12 @@ public class Fragment {
             e.printStackTrace();
         }
 
-        String displayName = plugin.getConfig().getString("fragments.display-name");
+        String displayName = DreamAddons.getInstance().getConfig().getString("fragments.display-name");
         if (displayName != null) {
             meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
         }
 
-        List<String> lore = plugin.getConfig().getStringList("fragments.lore");
+        List<String> lore = DreamAddons.getInstance().getConfig().getStringList("fragments.lore");
         if (lore != null && !lore.isEmpty()) {
             for (int i = 0; i < lore.size(); i++) {
                 lore.set(i, ChatColor.translateAlternateColorCodes('&', lore.get(i)));

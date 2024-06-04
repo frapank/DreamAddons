@@ -10,9 +10,6 @@ commands:
   frammento:
     usage: /frammento
     description: comando principale.
-  frammentidebug:
-    usage: /frammentidebug
-    description: ottenere un frammento.
   airdrop:
     usage: /airdrop
     description: airdrop command

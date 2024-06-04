@@ -77,6 +77,7 @@ general:
     - "&fframmentodebug &7• &fRiscatta frammento in un oggetto fisico."
     - "&f/frammenti imposta (player) (valore) &7• &fImposta i frammenti di un giocatore a un determinato valore."
     - "&f/frammenti azzera (player) &7• &fAzzera i frammenti di un giocatore."
+    - "&f/frammenti self  &7• &fTi da un frammento fisico"
     - "&7&m                                       "
     - ""
 

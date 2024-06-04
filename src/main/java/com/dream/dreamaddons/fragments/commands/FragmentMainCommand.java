@@ -1,6 +1,7 @@
 package com.dream.dreamaddons.fragments.commands;
 
 import com.dream.dreamaddons.DreamAddons;
+import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
 import com.dream.dreamaddons.utils.Functions;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.ChatColor;
@@ -50,6 +51,12 @@ public class FragmentMainCommand implements CommandExecutor {
                 String targetName = args[0];
                 Player targetPlayer = plugin.getServer().getPlayer(targetName);
 
+                if(args[0].equalsIgnoreCase("self") && player.hasPermission("dreamfragments.admin")){
+                    player.getInventory().addItem(Fragment.giveFragment(1));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragment-item-given")));
+                } else {
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                }
                 if (targetPlayer != null) {
                     int fragments = Functions.getFragments(targetPlayer);
 
@@ -61,7 +68,6 @@ public class FragmentMainCommand implements CommandExecutor {
                 } else {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-not-found")).replace("player%", targetName));
                 }
-
             }
 
             if (args.length == 2) {
