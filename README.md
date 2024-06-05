@@ -44,6 +44,7 @@ Una volta messo dentro il server, bastera fare i comandi dedicati allo staff, ch
 - `dream.fragment.placefragments`: Permesso per piazzare le head
 - `dream.boost.criticalboost`: Ti dara questo permesso all'aquisto del booster critical
 - `dream.boost.keepinv`: Ti dara questo permesso all'aquisto del booster keep inventory
+- `dream.boost.boostmoney`: Ti dara questo permesso all'aquisto del booster boost money
   
 ## Config
 
