@@ -16,7 +16,7 @@ public class AirDropCommand implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (player.hasPermission("dream.admin")) {
+            if (player.hasPermission("dream.airdrop.admin")) {
 
                 /* Args = 1 */
                 if (args.length == 1) {

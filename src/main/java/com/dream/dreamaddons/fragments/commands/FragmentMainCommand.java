@@ -30,7 +30,7 @@ public class FragmentMainCommand implements CommandExecutor {
              **/
 
             if (args.length == 0) {
-                if (sender.hasPermission("dreamfragments.admin")) {
+                if (sender.hasPermission("dream.fragment.admin")) {
                     List<String> message = plugin.getConfig().getStringList("general.admin-message");
                     for (String s : message) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
@@ -51,7 +51,7 @@ public class FragmentMainCommand implements CommandExecutor {
                 String targetName = args[0];
                 Player targetPlayer = plugin.getServer().getPlayer(targetName);
 
-                if(args[0].equalsIgnoreCase("self") && player.hasPermission("dreamfragments.admin")){
+                if(args[0].equalsIgnoreCase("self") && player.hasPermission("dream.fragment.admin")){
                     player.getInventory().addItem(Fragment.giveFragment(1));
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragment-item-given")));
                     return true;
@@ -72,7 +72,7 @@ public class FragmentMainCommand implements CommandExecutor {
             }
 
             if (args.length == 2) {
-                if (player.hasPermission("dreamfragments.admin")) {
+                if (player.hasPermission("dream.fragment.admin")) {
                     if (args[0].equalsIgnoreCase("azzera")) {
                         String targetName = args[1];
                         Player targetPlayer = plugin.getServer().getPlayer(targetName);
@@ -92,7 +92,7 @@ public class FragmentMainCommand implements CommandExecutor {
             }
 
             if (args.length == 3) {
-                if (player.hasPermission("dreamfragments.admin")) {
+                if (player.hasPermission("dream.fragment.admin")) {
                     if (args[0].equalsIgnoreCase("imposta")) {
                         String targetName = args[1];
                         Player targetPlayer = plugin.getServer().getPlayer(targetName);

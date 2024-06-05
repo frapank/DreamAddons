@@ -69,13 +69,15 @@ public class AirDrop {
                     return;
                 }
 
-                try {
-                    armorStand.getWorld().playSound(currentLocation, Sound.valueOf(soundFall), 1.0f, 1.0f);
-                } catch (IllegalArgumentException e) {
-                    DreamAddons.getInstance().getLogger().warning("Config error sound <fall-sound>: " + e);
-                    armorStand.remove();
-                    this.cancel();
-                    return;
+                if(!soundFall.isEmpty()){
+                    try {
+                        armorStand.getWorld().playSound(currentLocation, Sound.valueOf(soundFall), 1.0f, 1.0f);
+                    } catch (IllegalArgumentException e) {
+                        DreamAddons.getInstance().getLogger().warning("Config error sound <fall-sound>: " + e);
+                        armorStand.remove();
+                        this.cancel();
+                        return;
+                    }
                 }
 
                 double deltaX = config.getDouble("airdebug-horizontal-speed", 0.1);

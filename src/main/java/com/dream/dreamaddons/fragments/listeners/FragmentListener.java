@@ -67,7 +67,7 @@ public class FragmentListener implements Listener {
             Functions.addFragments(player, player.getItemInHand().getAmount());
             player.getInventory().removeItem(player.getItemInHand());
             NmsUtils.sendActionBar(player, DreamAddons.color("&aHai claimato un frammento"));
-            if(!player.hasPermission("dream.placefragments")){
+            if(!player.hasPermission("dream.fragment.placefragments")){
                 event.setCancelled(true);
             }
         }

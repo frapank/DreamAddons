@@ -27,20 +27,19 @@ public class ClickListener implements Listener {
                     String displayName = ChatColor.stripColor(meta.getDisplayName());
 
                     if (displayName.equalsIgnoreCase("Keep Inventory")) {
-                        // Attiva la keep e rimuovi i frammenti
+                        PerkActivator.activateKeepInventory((Player) event.getWhoClicked());
                         event.setCancelled(true);
                         return;
                     }
 
                     if (displayName.equalsIgnoreCase("Boost Money")) {
-                        // Attiva la boost money e rimuovi i frammenti
+                        PerkActivator.activateMoneyBoost((Player) event.getWhoClicked());
                         event.setCancelled(true);
                         return;
                     }
 
                     if (displayName.equalsIgnoreCase("Critical Boost")) {
                         PerkActivator.activateCriticalBoost((Player) event.getWhoClicked());
-                        event.getWhoClicked().sendMessage("Hai cliccato la gui");
                         event.setCancelled(true);
                         return;
                     }

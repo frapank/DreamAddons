@@ -126,10 +126,9 @@ public class Functions {
     }
 
     public static void constructLore(String path, ItemMeta item){
-
         List<String> loreList = config.getStringList(path);
-        ArrayList<String> lore = new ArrayList<>(loreList);
+        ArrayList<String> lore = new ArrayList<>();
+        for(String str : loreList){lore.add(DreamAddons.color(str));}
         item.setLore(lore);
-
     }
 }

@@ -13,7 +13,6 @@ import com.dream.dreamaddons.fragments.shop.commandListener.CommandBlackMarketGu
 import com.dream.dreamaddons.fragments.shop.shoplisteners.ClickListener;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.CriticalListener;
 import com.dream.dreamaddons.fragments.shop.shoplisteners.DeathEvent;
-import com.dream.dreamaddons.fragments.shop.shoplisteners.KeepInventoryListener;
 import com.dream.dreamaddons.utils.Functions;
 import lombok.Getter;
 import net.luckperms.api.LuckPerms;
@@ -62,11 +61,11 @@ public final class DreamAddons extends JavaPlugin {
 
 
         /* Base */
-        getLogger().warning("<--------------------->");
-        getLogger().warning(" Airdrop plugin stared ");
-        getLogger().warning("                       ");
-        getLogger().warning("  By Gourmet/Fiscalo   ");
-        getLogger().warning("<--------------------->");
+        getLogger().warning("<------------------------>");
+        getLogger().warning(" DreamAddon plugin stared ");
+        getLogger().warning("                          ");
+        getLogger().warning("     By Gourmet/Fiscalo   ");
+        getLogger().warning("<------------------------>");
         saveDefaultConfig();
 
         /* Initialize */
@@ -115,7 +114,6 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
         getServer().getPluginManager().registerEvents(new CriticalListener(), this);
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
-        getServer().getPluginManager().registerEvents(new KeepInventoryListener(), this);
         getServer().getPluginManager().registerEvents(new DamagerIndicator(), this);
     }
     private void registerCommands() {
