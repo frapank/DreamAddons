@@ -39,8 +39,11 @@ Una volta messo dentro il server, bastera fare i comandi dedicati allo staff, ch
 
 ## Permessi
 
-- `dream.admin`: Accesso ai comandi per gli AirDrop e /itemstats
-- `dream.placefragments`: Permesso per piazzare le head
+- `dream.airdrop.admin`: Accesso ai comandi per gli AirDrop
+- `dream.fragment.admin` Accesso ai comandi admin dei frammenti
+- `dream.fragment.placefragments`: Permesso per piazzare le head
+- `dream.boost.criticalboost`: Ti dara questo permesso all'aquisto del booster critical
+- `dream.boost.keepinv`: Ti dara questo permesso all'aquisto del booster keep inventory
   
 ## Config
 
