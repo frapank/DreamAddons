@@ -97,7 +97,7 @@ public class Functions {
             for(ArmorStand armorStand : armorStands){
                 if(armorStand.getCustomName() != null &&
                         (armorStand.getCustomName().equals(DreamAddons.color(config.getString("name"))) ||
-                                armorStand.getCustomName().equals(DreamAddons.color("&bAirDrops")))){
+                                armorStand.getCustomName().equals(DreamAddons.color("&dMeteora")))){
 
                     armorStand.remove();
                 }
@@ -105,6 +105,10 @@ public class Functions {
         } catch (NullPointerException e){
             DreamAddons.getInstance().getLogger().warning("World exeption: " + e);
         }
+    }
+
+    public static void removeAllParticles() {
+        AirDrop.removeAllParticles();
     }
 
     public static int getFragments(Player player){
@@ -128,8 +132,4 @@ public class Functions {
         item.setLore(lore);
 
     }
-
-
-
-
 }

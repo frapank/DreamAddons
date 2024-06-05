@@ -11,9 +11,11 @@ import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +24,7 @@ public class AirDrop {
     private static FileConfiguration config = DreamAddons.getInstance().getConfig();
     private static Location currentLocation;
     private static Location newLocation;
+    private static List<BukkitTask> activeParticleTasks = new ArrayList<>(); // Track active particle tasks
 
     public static void spawnDrop(Location location) {
         World world = location.getWorld();
@@ -53,7 +56,7 @@ public class AirDrop {
 
                 if (currentLocation.getBlock().getType() != Material.AIR || armorStand.isDead()) {
                     try {
-                        //armorStand.getWorld().playSound(currentLocation, Sound.valueOf(soundEnd), 1.0f, 1.0f);
+                        armorStand.getWorld().playSound(currentLocation, Sound.valueOf(soundEnd), 1.0f, 1.0f);
                     } catch (IllegalArgumentException e) {
                         DreamAddons.getInstance().getLogger().warning("Config error sound <end-sound>: " + e);
                     }
@@ -121,7 +124,7 @@ public class AirDrop {
     }
 
     private static void startLavaParticleEffect(ArmorStand armorStand) {
-        new BukkitRunnable() {
+        BukkitTask task = new BukkitRunnable() {
             @Override
             public void run() {
                 if (armorStand.isDead() || armorStand.getLocation().getBlock().getType() == Material.AIR) {
@@ -136,5 +139,14 @@ public class AirDrop {
                 }
             }
         }.runTaskTimer(DreamAddons.getInstance(), 0, 20);
+
+        activeParticleTasks.add(task);
+    }
+
+    public static void removeAllParticles() {
+        for (BukkitTask task : activeParticleTasks) {
+            task.cancel();
+        }
+        activeParticleTasks.clear();
     }
 }
