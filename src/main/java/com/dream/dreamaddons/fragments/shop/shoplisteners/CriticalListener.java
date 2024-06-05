@@ -22,7 +22,6 @@ public class CriticalListener implements Listener {
             int randomNumber = random.nextInt(10) + 1;
             if(randomNumber <= 2){
                 damager.getWorld().playSound(damager.getLocation(), Sound.NOTE_PLING, 1.0f, 1.0f);
-                damager.sendMessage("test");
                 Double oldDamage = event.getDamage();
                 Double newDamage = oldDamage + 1.5;
                 event.setDamage(newDamage);

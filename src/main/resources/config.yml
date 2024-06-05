@@ -114,7 +114,7 @@ critical-boost:
     - "&8| &7avrete una possibiltà di"
     - "&8| &7fare più danno"
     - " "
-    - "&8» &eClicca per aprire"
+    - "&8| &ePrezzo > 20 frammenti"
 
 money-boost:
   display-name: "&eBoost Money"
@@ -122,7 +122,7 @@ money-boost:
     - "&8| &7Il Boost Money sarà"
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
-    - "&8» &eClicca per aprire"
+    - "&8| &ePrezzo > 15 frammenti"
 
 keep-inv:
   display-name: "&6Keep Inventory"
@@ -130,7 +130,7 @@ keep-inv:
     - "&8| &7La Keep Inventory sarà"
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
-    - "&8» &eClicca per aprire"
+    - "&8| &ePrezzo > 25 frammenti"
 
 #Advanced
 airdebug-down: 0.6

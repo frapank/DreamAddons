@@ -15,7 +15,6 @@ public class CommandBlackMarketGui implements CommandExecutor {
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
             BlackMarketGui.openGui(player);
-            player.sendMessage(DreamAddons.color("&aGui aperta"));
 
             return true;
         }

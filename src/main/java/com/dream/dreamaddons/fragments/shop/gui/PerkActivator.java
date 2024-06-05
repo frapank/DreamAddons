@@ -13,14 +13,13 @@ public class PerkActivator {
     Lo faccio dopo ora non ho voglia
 
      */
-    private static LuckyFunctions luckyFunctions = new LuckyFunctions();
 
     public static void activateKeepInventory(Player player){
         if(!player.hasPermission("dream.boost.keepinv")){
             if(Functions.getFragments(player) >= 10){
-                Functions.setFragments(player, Functions.getFragments(player) - 10);
+                Functions.setFragments(player, Functions.getFragments(player) - 25);
                 player.sendMessage(DreamAddons.color("&eHai aquistato la keep invenotry"));
-                luckyFunctions.addPermission(player, "dream.boost.keepinv");
+                DreamAddons.getLuckyFunctions().addPermission(player, "dream.boost.keepinv");
                 return;
             }
             player.sendMessage(DreamAddons.color("&cNon cai na lira"));
@@ -31,10 +30,10 @@ public class PerkActivator {
 
     public static void activateMoneyBoost(Player player){
         if(!player.hasPermission("dream.boost.boostmoney")){
-            if(Functions.getFragments(player) >= 10){
-                Functions.setFragments(player, Functions.getFragments(player) - 10);
+            if(Functions.getFragments(player) >= 15){
+                Functions.setFragments(player, Functions.getFragments(player) - 15);
                 player.sendMessage(DreamAddons.color("&eHai aquistato il boost money"));
-                luckyFunctions.addPermission(player, "dream.boost.boostmoney");
+                DreamAddons.getLuckyFunctions().addPermission(player, "dream.boost.boostmoney");
                 return;
             }
             player.sendMessage(DreamAddons.color("&cNon cai na lira"));
@@ -45,10 +44,10 @@ public class PerkActivator {
 
     public static void activateCriticalBoost(Player player){
         if(!player.hasPermission("dream.boost.criticalboost")){
-            if(Functions.getFragments(player) >= 10){
-                Functions.setFragments(player, Functions.getFragments(player) - 10);
+            if(Functions.getFragments(player) >= 25){
+                Functions.setFragments(player, Functions.getFragments(player) - 20);
                 player.sendMessage(DreamAddons.color("&eHai aquistato il booster critical!"));
-                luckyFunctions.addPermission(player, "dream.boost.criticalboost");
+                DreamAddons.getLuckyFunctions().addPermission(player, "dream.boost.criticalboost");
                 return;
             }
             player.sendMessage(DreamAddons.color("&cNon cai na lira"));

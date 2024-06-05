@@ -10,21 +10,23 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class DeathEvent implements Listener {
 
-    private static LuckyFunctions luckyFunctions;
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
         Player player = (Player) event.getEntity();
-        if(DreamAddons.getCriticalBoostplayers().contains(player.getUniqueId())){
+        if(player.hasPermission("dream.boost.criticalboost")){
             NmsUtils.sendActionBar(player, DreamAddons.color("&cSei morto, i boost sono stati rimossi ):"));
-            luckyFunctions.removePermission(player, "dream.boost.criticalboost");
+            DreamAddons.getLuckyFunctions().removePermission(player, "dream.boost.criticalboost");
+            player.sendMessage(DreamAddons.color("&eSei morto, di ciao alla Critical Boost"));
         }
-        if(DreamAddons.getBoostMoneyPlayers().contains(player.getUniqueId())){
+        if(player.hasPermission("dream.boost.boostmoney")){
             NmsUtils.sendActionBar(player, DreamAddons.color("&cSei morto, i boost sono stati rimossi ):"));
-            luckyFunctions.removePermission(player, "dream.boost.boostmoney");
+            DreamAddons.getLuckyFunctions().removePermission(player, "dream.boost.boostmoney");
+            player.sendMessage(DreamAddons.color("&eSei morto, di ciao al Boost Money"));
         }
-        if(DreamAddons.getKeepInventoryPlayers().contains(player.getUniqueId())){
+        if(player.hasPermission("dream.boost.criticalboost")){
             NmsUtils.sendActionBar(player, DreamAddons.color("&cSei morto, i boost sono stati rimossi ):"));
-            luckyFunctions.removePermission(player, "dream.boost.keepinv");
+            DreamAddons.getLuckyFunctions().removePermission(player, "dream.boost.criticalboost");
+            player.sendMessage(DreamAddons.color("&eSei morto, di ciao alla KeepInventory"));
         }
     }
 }
