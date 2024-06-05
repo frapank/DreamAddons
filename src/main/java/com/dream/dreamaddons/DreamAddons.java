@@ -64,7 +64,7 @@ public final class DreamAddons extends JavaPlugin {
         getLogger().warning("<------------------------>");
         getLogger().warning(" DreamAddon plugin stared ");
         getLogger().warning("                          ");
-        getLogger().warning("     By Gourmet/Fiscalo   ");
+        getLogger().warning("    By Gourmet/Fiscalo    ");
         getLogger().warning("<------------------------>");
         saveDefaultConfig();
 
