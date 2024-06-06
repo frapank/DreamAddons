@@ -1,7 +1,6 @@
-package com.dream.dreamaddons.fragments.shop.shoplisteners;
+package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.utils.LuckyFunctions;
 import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,9 +22,9 @@ public class DeathEvent implements Listener {
             DreamAddons.getLuckyFunctions().removePermission(player, "dream.boost.boostmoney");
             player.sendMessage(DreamAddons.color("&eSei morto, di ciao al Boost Money"));
         }
-        if(player.hasPermission("dream.boost.criticalboost")){
+        if(player.hasPermission("dream.boost.keepinv")){
             NmsUtils.sendActionBar(player, DreamAddons.color("&cSei morto, i boost sono stati rimossi ):"));
-            DreamAddons.getLuckyFunctions().removePermission(player, "dream.boost.criticalboost");
+            DreamAddons.getLuckyFunctions().removePermission(player, "dream.boost.keepinv");
             player.sendMessage(DreamAddons.color("&eSei morto, di ciao alla KeepInventory"));
         }
     }

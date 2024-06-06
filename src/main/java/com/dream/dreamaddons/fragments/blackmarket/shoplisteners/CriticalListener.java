@@ -1,15 +1,11 @@
-package com.dream.dreamaddons.fragments.shop.shoplisteners;
+package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
 
-import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.utils.Functions;
-import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.Random;
 
 public class CriticalListener implements Listener {

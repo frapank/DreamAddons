@@ -9,10 +9,10 @@ import com.dream.dreamaddons.extra.DamagerIndicator;
 import com.dream.dreamaddons.fragments.commands.FragmentMainCommand;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
-import com.dream.dreamaddons.fragments.shop.commandListener.CommandBlackMarketGui;
-import com.dream.dreamaddons.fragments.shop.shoplisteners.ClickListener;
-import com.dream.dreamaddons.fragments.shop.shoplisteners.CriticalListener;
-import com.dream.dreamaddons.fragments.shop.shoplisteners.DeathEvent;
+import com.dream.dreamaddons.fragments.blackmarket.commandListener.CommandBlackMarketGui;
+import com.dream.dreamaddons.fragments.blackmarket.shoplisteners.ClickListener;
+import com.dream.dreamaddons.fragments.blackmarket.shoplisteners.CriticalListener;
+import com.dream.dreamaddons.fragments.blackmarket.shoplisteners.DeathEvent;
 import com.dream.dreamaddons.utils.Functions;
 import com.dream.dreamaddons.utils.LuckyFunctions;
 import lombok.Getter;
@@ -108,7 +108,7 @@ public final class DreamAddons extends JavaPlugin {
         this.getCommand("airdrop").setExecutor(new AirDropCommand());
         this.getCommand("frammenti").setExecutor(new FragmentMainCommand(this));
         this.getCommand("frammento").setExecutor(new FragmentMainCommand(this));
-        this.getCommand("blackmarketgui").setExecutor(new CommandBlackMarketGui());
+        this.getCommand("negozio").setExecutor(new CommandBlackMarketGui());
     }
 
     /* Config fragments */

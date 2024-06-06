@@ -107,30 +107,64 @@ messages:
   fragments-redeemed: "&aHai riscattato un frammento."
 
 #Black Market
+main-gui:
+  item-shop:
+    display-name: "&cShop item"
+    lore:
+      - " "
+      - "&8| &7Aquista gli item segreti"
+      - "&8| &7arriva al potere dei vip"
+      - "&8| &7e distruggili"
+      - " "
+      - "&8» &eClicca per aprire"
+  perk-shop:
+    display-name: "&cPerk item"
+    lore:
+      - " "
+      - "&8| &7Aquista dei vantaggi"
+      - "&8| &7migliore te stesso"
+      - "&8| &7e stai attento a non"
+      - "&8| &7perderli"
+      - " "
+      - "&8» &eClicca per aprire"
+  kit-shop:
+    display-name: "&cPerk item"
+    lore:
+      - " "
+      - "&8| &7Aquista i kit "
+      - "&8| &7riservati ai vip"
+      - "&8| &7ma non pensare che"
+      - "&8| &7saranno gratis"
+      - " "
+      - "&8» &eClicca per aprire"
+
 critical-boost:
   display-name: "&cCritical Boost"
   lore:
+    - " "
     - "&8| &7Grazie a questo perk"
     - "&8| &7avrete una possibiltà di"
     - "&8| &7fare più danno"
     - " "
-    - "&8| &ePrezzo > 20 frammenti"
+    - "&8» &ePrezzo > 20 frammenti"
 
 money-boost:
   display-name: "&eBoost Money"
   lore:
+    - " "
     - "&8| &7Il Boost Money sarà"
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
-    - "&8| &ePrezzo > 15 frammenti"
+    - "&8» &ePrezzo > 15 frammenti"
 
 keep-inv:
   display-name: "&6Keep Inventory"
   lore:
+    - " "
     - "&8| &7La Keep Inventory sarà"
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
-    - "&8| &ePrezzo > 25 frammenti"
+    - "&8» &ePrezzo > 25 frammenti"
 
 #Advanced
 airdebug-down: 0.6

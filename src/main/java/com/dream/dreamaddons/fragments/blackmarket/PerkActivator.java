@@ -1,8 +1,7 @@
-package com.dream.dreamaddons.fragments.shop.gui;
+package com.dream.dreamaddons.fragments.blackmarket;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
-import com.dream.dreamaddons.utils.LuckyFunctions;
 import org.bukkit.entity.Player;
 
 public class PerkActivator {

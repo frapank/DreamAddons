@@ -1,7 +1,7 @@
-package com.dream.dreamaddons.fragments.shop.commandListener;
+package com.dream.dreamaddons.fragments.blackmarket.commandListener;
 
-import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.fragments.shop.gui.BlackMarketGui;
+import com.dream.dreamaddons.fragments.blackmarket.gui.MainGuiBlackMarket;
+import com.dream.dreamaddons.fragments.blackmarket.gui.PerkMarket;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,7 +14,7 @@ public class CommandBlackMarketGui implements CommandExecutor {
 
         if(commandSender instanceof Player){
             Player player = (Player) commandSender;
-            BlackMarketGui.openGui(player);
+            MainGuiBlackMarket.openGui(player);
 
             return true;
         }

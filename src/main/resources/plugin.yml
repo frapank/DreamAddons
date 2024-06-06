@@ -16,6 +16,6 @@ commands:
   itemstats:
     usage: /itemstats
     description: test command
-  blackmarketgui:
-    usage: /blackgui
+  negozio:
+    usage: /negozio
     description: test gui

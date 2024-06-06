@@ -1,7 +1,8 @@
-package com.dream.dreamaddons.fragments.shop.shoplisteners;
+package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
 
 
-import com.dream.dreamaddons.fragments.shop.gui.PerkActivator;
+import com.dream.dreamaddons.fragments.blackmarket.PerkActivator;
+import com.dream.dreamaddons.fragments.blackmarket.gui.PerkMarket;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,19 +27,47 @@ public class ClickListener implements Listener {
                 if (meta != null && meta.hasDisplayName()) {
                     String displayName = ChatColor.stripColor(meta.getDisplayName());
 
-                    if (displayName.equalsIgnoreCase("Keep Inventory")) {
+                    if (displayName.equalsIgnoreCase("Item Shop")) {
+                        //ItemMarket.openGui((Player) event.getWhoClicked());
+                        event.setCancelled(true);
+                        return;
+                    }
+
+                    if (displayName.equalsIgnoreCase("Perk Shop")) {
+                        PerkMarket.openGui((Player) event.getWhoClicked());
+                        event.setCancelled(true);
+                        return;
+                    }
+
+                }
+            }
+
+            event.setCancelled(true);
+        }
+
+        if (event.getInventory().getName().equalsIgnoreCase("Perk Market")) {
+
+            ItemStack clickedItem = event.getCurrentItem();
+
+            if (clickedItem != null && clickedItem.hasItemMeta()) {
+                ItemMeta meta = clickedItem.getItemMeta();
+
+                if (meta != null && meta.hasDisplayName()) {
+                    String displayName = ChatColor.stripColor(meta.getDisplayName());
+
+                    if (displayName.equalsIgnoreCase("KEEP INVENTORY")) {
                         PerkActivator.activateKeepInventory((Player) event.getWhoClicked());
                         event.setCancelled(true);
                         return;
                     }
 
-                    if (displayName.equalsIgnoreCase("Boost Money")) {
+                    if (displayName.equalsIgnoreCase("BOOST MONEY")) {
                         PerkActivator.activateMoneyBoost((Player) event.getWhoClicked());
                         event.setCancelled(true);
                         return;
                     }
 
-                    if (displayName.equalsIgnoreCase("Critical Boost")) {
+                    if (displayName.equalsIgnoreCase("CRITICAL BOOST")) {
                         PerkActivator.activateCriticalBoost((Player) event.getWhoClicked());
                         event.setCancelled(true);
                         return;

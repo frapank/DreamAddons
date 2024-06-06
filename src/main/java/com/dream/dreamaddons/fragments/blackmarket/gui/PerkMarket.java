@@ -1,4 +1,4 @@
-package com.dream.dreamaddons.fragments.shop.gui;
+package com.dream.dreamaddons.fragments.blackmarket.gui;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
@@ -14,12 +14,12 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.lang.reflect.Field;
 import java.util.UUID;
 
-public class BlackMarketGui {
+public class PerkMarket {
 
     /* Gui */
     public static void openGui(Player player){
 
-        Inventory gui = Bukkit.createInventory(player,27, "Black Market");
+        Inventory gui = Bukkit.createInventory(player,27, "Perk Market");
 
         gui.setItem(10, new ItemStack(keepInventoryItemStack()));
         gui.setItem(13, new ItemStack(doubleMoneyItemStack()));
@@ -47,7 +47,7 @@ public class BlackMarketGui {
         }
 
         Functions.constructLore("keep-inv.lore", meta);
-        meta.setDisplayName(DreamAddons.color("&6Keep Inventory"));
+        meta.setDisplayName(DreamAddons.color("&6&lKEEP INVENTORY"));
 
         skull.setItemMeta(meta);
         return skull;
@@ -73,7 +73,7 @@ public class BlackMarketGui {
         }
 
         Functions.constructLore("money-boost.lore", meta);
-        meta.setDisplayName(DreamAddons.color("&eBoost Money"));
+        meta.setDisplayName(DreamAddons.color("&e&lBOOST MONEY"));
 
         skull.setItemMeta(meta);
         return skull;
@@ -102,7 +102,7 @@ public class BlackMarketGui {
         }
 
         Functions.constructLore("critical-boost.lore", meta);
-        meta.setDisplayName(DreamAddons.color("&cCritical Boost"));
+        meta.setDisplayName(DreamAddons.color("&c&lCRITICAL BOOST"));
 
         skull.setItemMeta(meta);
         return skull;
