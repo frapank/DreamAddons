@@ -146,7 +146,7 @@ critical-boost:
     - "&8| &7avrete una possibiltà di"
     - "&8| &7fare più danno"
     - " "
-    - "&8» &ePrezzo > 20 frammenti"
+    - "&8» &e 20 frammenti"
 
 money-boost:
   display-name: "&eBoost Money"
@@ -155,7 +155,7 @@ money-boost:
     - "&8| &7Il Boost Money sarà"
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
-    - "&8» &ePrezzo > 15 frammenti"
+    - "&8» &e15 frammenti"
 
 keep-inv:
   display-name: "&6Keep Inventory"
@@ -164,8 +164,34 @@ keep-inv:
     - "&8| &7La Keep Inventory sarà"
     - "&8| &7rimosso alla prossima morte o riavvio"
     - " "
-    - "&8» &ePrezzo > 25 frammenti"
+    - "&8» &e25 frammenti"
 
+item-shop:
+  axe:
+    display-name: "&e&lASCIA"
+    lore:
+      - " "
+      - "&8| &7Distruggi l'armatura"
+      - "&8| &7del tuo nemico!"
+      - " "
+      - "&8» &e5 frammenti"
+  obsidian:
+    display-name: "&d&lOSSIDIANA"
+    lore:
+      - " "
+      - "&8| &7Proteggiti dai nemici"
+      - "&8| &7in fretta!"
+      - " "
+      - "&8» &e7 frammenti"
+  cobweb:
+    display-name: "&f&lRAGNATELA"
+    lore:
+      - " "
+      - "&8| &7Intrappola i tuoi"
+      - "&8| &7nemici!"
+      - " "
+      - "&8» &e9 frammenti"
+      -
 #Advanced
 airdebug-down: 0.6
 airdebug-rotation: 10
