@@ -137,6 +137,13 @@ main-gui:
       - "&8| &7saranno gratis"
       - " "
       - "&8» &eClicca per aprire"
+  head-player:
+    lore:
+      - " "
+      - "&8| &7Info "
+      - "&8| &7"
+      - "&8| &7"
+      - "&8| &7"
 
 critical-boost:
   display-name: "&cCritical Boost"

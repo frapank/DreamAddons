@@ -5,6 +5,7 @@ import com.dream.dreamaddons.utils.Functions;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.Bukkit;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -19,13 +20,39 @@ public class PerkMarket {
     /* Gui */
     public static void openGui(Player player){
 
+        ItemStack lightGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.SILVER.getData());
+        ItemStack darkGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
         Inventory gui = Bukkit.createInventory(player,27, "Perk Market");
 
         gui.setItem(10, new ItemStack(keepInventoryItemStack()));
         gui.setItem(13, new ItemStack(doubleMoneyItemStack()));
         gui.setItem(16, new ItemStack(criticalBoost()));
 
-        player.openInventory(gui);
+        gui.setItem(31, new ItemStack(playerHead(player)));
+
+        for (int slot = 0; slot < 36; slot++) {
+            if (gui.getItem(slot) == null) {
+                if (slot < 27) {
+                    gui.setItem(slot, lightGrayGlassPane);
+                } else {
+                    gui.setItem(slot, darkGrayGlassPane);
+                }
+            }
+        }
+
+        Functions.openGuiAsync(player, gui);
+    }
+
+    private static ItemStack playerHead(Player player){
+
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        meta.setOwner(player.getName());
+        Functions.constructLore("main-gui.head-player", meta);
+
+        skull.setItemMeta(meta);
+
+        return skull;
     }
 
 

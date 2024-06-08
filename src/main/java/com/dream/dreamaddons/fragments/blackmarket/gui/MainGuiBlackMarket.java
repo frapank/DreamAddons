@@ -4,11 +4,15 @@ import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import net.minecraft.server.v1_8_R3.Slot;
 import org.bukkit.Bukkit;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
@@ -18,13 +22,39 @@ public class MainGuiBlackMarket {
 
 
     public static void openGui(Player player){
-        Inventory gui = Bukkit.createInventory(player, 27, "Black Market");
+        ItemStack lightGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.SILVER.getData());
+        ItemStack darkGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
+        Inventory gui = Bukkit.createInventory(player, 36, "Black Market");
 
         gui.setItem(11, new ItemStack(itemShop()));
         gui.setItem(13, new ItemStack(kitShop()));
         gui.setItem(15, new ItemStack(perkShop()));
 
-        player.openInventory(gui);
+        gui.setItem(31, new ItemStack(playerHead(player)));
+
+        for (int slot = 0; slot < 36; slot++) {
+            if (gui.getItem(slot) == null) {
+                if (slot < 27) {
+                    gui.setItem(slot, lightGrayGlassPane);
+                } else {
+                    gui.setItem(slot, darkGrayGlassPane);
+                }
+            }
+        }
+
+        Functions.openGuiAsync(player, gui);
+    }
+
+    private static ItemStack playerHead(Player player){
+
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        meta.setOwner(player.getName());
+        Functions.constructLore("main-gui.head-player", meta);
+
+        skull.setItemMeta(meta);
+
+        return skull;
     }
 
     private static ItemStack itemShop(){

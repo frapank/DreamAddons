@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -130,5 +131,11 @@ public class Functions {
         ArrayList<String> lore = new ArrayList<>();
         for(String str : loreList){lore.add(DreamAddons.color(str));}
         item.setLore(lore);
+    }
+
+    public static void openGuiAsync(Player player, Inventory gui){
+        DreamAddons.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(DreamAddons.getInstance(), () -> {
+            Bukkit.getPlayer("NomeGiocatore").openInventory(gui);
+        }, 20L);
     }
 }
