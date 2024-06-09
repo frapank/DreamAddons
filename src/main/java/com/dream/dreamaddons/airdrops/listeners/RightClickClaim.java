@@ -23,7 +23,7 @@ public class RightClickClaim implements Listener {
             ArmorStand armorStand = (ArmorStand) event.getEntity();
             Player player = (Player) event.getDamager();
             if (armorStand.getCustomName() != null && armorStand.getCustomName().equals(DreamAddons.color(config.getString("name")))){
-                String soundClaim= config.getString("claim-sound");
+                String soundClaim = config.getString("claim-sound");
                 try{
                     armorStand.getWorld().playSound(armorStand.getLocation(), Sound.valueOf(soundClaim), 1.0f, 1.0f);
                 } catch (IllegalArgumentException e){

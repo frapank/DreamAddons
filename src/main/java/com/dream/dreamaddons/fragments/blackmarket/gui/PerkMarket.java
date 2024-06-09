@@ -62,7 +62,7 @@ public class PerkMarket {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(player.getName());
-        Functions.constructLore("main-gui.head-player.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta);
 
         skull.setItemMeta(meta);
 
@@ -87,7 +87,7 @@ public class PerkMarket {
             e.printStackTrace();
         }
 
-        Functions.constructLore("keep-inv.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "keep-inv.lore", meta);
         meta.setDisplayName(DreamAddons.color("&6&lKEEP INVENTORY"));
 
         skull.setItemMeta(meta);
@@ -113,7 +113,7 @@ public class PerkMarket {
             e.printStackTrace();
         }
 
-        Functions.constructLore("money-boost.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "money-boost.lore", meta);
         meta.setDisplayName(DreamAddons.color("&e&lBOOST MONEY"));
 
         skull.setItemMeta(meta);
@@ -142,7 +142,7 @@ public class PerkMarket {
             e.printStackTrace();
         }
 
-        Functions.constructLore("critical-boost.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "critical-boost.lore", meta);
         meta.setDisplayName(DreamAddons.color("&c&lCRITICAL BOOST"));
 
         skull.setItemMeta(meta);

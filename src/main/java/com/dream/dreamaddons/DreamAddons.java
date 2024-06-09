@@ -38,12 +38,15 @@ public final class DreamAddons extends JavaPlugin {
     @Getter
     private FileConfiguration fragmentsConfig;
     @Getter
+    private FileConfiguration languageConfig;
+    @Getter
     private static HashMap<String, Location> spawns;
     @Getter
     private static LuckyFunctions luckyFunctions;
     private AirDropSpawnerLoader configManager;
     private BukkitTask spawnerTask;
     private File fragmentsFile;
+    private File languageFile;
     public String prefix;
 
 
@@ -66,11 +69,12 @@ public final class DreamAddons extends JavaPlugin {
         configManager = new AirDropSpawnerLoader();
         spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
         instance = this;
-        prefix = this.getConfig().getString("general.prefix");
+        prefix = this.getLanguageConfig().getString("general.prefix");
 
         /* Other */
         Functions.removeAllArmorStand();
         createFragmentsFile();
+        createLanguageFile();
 
         /* Commands && events */
         registerCommands();
@@ -88,6 +92,7 @@ public final class DreamAddons extends JavaPlugin {
     @Override
     public void onDisable() {
         saveFragmentsConfig();
+        saveLanguageConfig();
     }
 
     /* Colors */
@@ -126,6 +131,24 @@ public final class DreamAddons extends JavaPlugin {
             fragmentsConfig.save(fragmentsFile);
         } catch (IOException e) {
             getLogger().log(Level.SEVERE, "Could not save frammenti.yml", e);
+        }
+    }
+
+    /* Config fragments */
+    public void createLanguageFile() {
+        languageFile = new File(getDataFolder(), "language.yml");
+        if (!languageFile.exists()) {
+            languageFile.getParentFile().mkdirs();
+            saveResource("language.yml", false);
+        }
+        languageConfig = YamlConfiguration.loadConfiguration(languageFile);
+    }
+
+    public void saveLanguageConfig() {
+        try {
+            languageConfig.save(languageFile);
+        } catch (IOException e) {
+            getLogger().log(Level.SEVERE, "Could not save language.yml", e);
         }
     }
 

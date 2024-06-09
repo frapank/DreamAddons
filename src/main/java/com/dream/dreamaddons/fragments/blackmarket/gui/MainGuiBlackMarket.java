@@ -59,7 +59,7 @@ public class MainGuiBlackMarket {
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setDisplayName(DreamAddons.color("&e&l" + player.getName()));
         meta.setOwner(player.getName());
-        Functions.constructLore("main-gui.head-player.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta);
 
         skull.setItemMeta(meta);
 
@@ -82,7 +82,7 @@ public class MainGuiBlackMarket {
             e.printStackTrace();
         }
 
-        Functions.constructLore("main-gui.item-shop.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.item-shop.lore", meta);
         meta.setDisplayName(DreamAddons.color("&6&lITEM SHOP"));
 
         skull.setItemMeta(meta);
@@ -105,7 +105,7 @@ public class MainGuiBlackMarket {
             e.printStackTrace();
         }
 
-        Functions.constructLore("main-gui.perk-shop.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.perk-shop.lore", meta);
         meta.setDisplayName(DreamAddons.color("&6&lPERK SHOP"));
 
         skull.setItemMeta(meta);
@@ -128,7 +128,7 @@ public class MainGuiBlackMarket {
             e.printStackTrace();
         }
 
-        Functions.constructLore("main-gui.kit-shop.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.kit-shop.lore", meta);
         meta.setDisplayName(DreamAddons.color("&c&lCOMING SOON..."));
 
         skull.setItemMeta(meta);

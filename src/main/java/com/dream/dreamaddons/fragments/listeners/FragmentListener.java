@@ -41,7 +41,7 @@ public class FragmentListener implements Listener {
 
         String itemName = item.getItemMeta().getDisplayName();
         String strippedItemName = ChatColor.stripColor(itemName);
-        String configuredName = config.getString("fragments.display-name");
+        String configuredName = DreamAddons.getInstance().getLanguageConfig().getString("fragments.display-name");
         String strippedConfiguredName = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', configuredName));
 
 //        player.sendMessage("redeem richiamato");
@@ -78,8 +78,8 @@ public class FragmentListener implements Listener {
         String itemDisplayName = itemMeta.getDisplayName();
         List<String> itemLore = itemMeta.getLore();
 
-        String configDisplayName = DreamAddons.color(plugin.getConfig().getString("fragments.display-name"));
-        List<String> configLore = plugin.getConfig().getStringList("fragments.lore");
+        String configDisplayName = DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("fragments.display-name"));
+        List<String> configLore = DreamAddons.getInstance().getLanguageConfig().getStringList("fragments.lore");
         for (int i = 0; i < configLore.size(); i++) {
             configLore.set(i, ChatColor.translateAlternateColorCodes('&', configLore.get(i)));
         }
@@ -87,15 +87,15 @@ public class FragmentListener implements Listener {
         if (configDisplayName.equals(itemDisplayName) && configLore.equals(itemLore)) {
             int amount = item.getAmount();
             Functions.addFragments(player, amount);
-            player.sendMessage(DreamAddons.color(plugin.getConfig().getString("messages.fragments-redeemed").replace("%amount%", String.valueOf(amount))));
+            player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("messages.fragments-redeemed").replace("%amount%", String.valueOf(amount))));
             player.getInventory().removeItem(item);
         }
     }
 
     public void removeAllFragments(Player player) {
         Inventory inventory = player.getInventory();
-        String configDisplayName = DreamAddons.color(plugin.getConfig().getString("fragments.display-name"));
-        List<String> configLore = plugin.getConfig().getStringList("fragments.lore");
+        String configDisplayName = DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("fragments.display-name"));
+        List<String> configLore = DreamAddons.getInstance().getLanguageConfig().getStringList("fragments.lore");
         for (int i = 0; i < configLore.size(); i++) {
             configLore.set(i, ChatColor.translateAlternateColorCodes('&', configLore.get(i)));
         }

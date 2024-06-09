@@ -33,20 +33,20 @@ public class Functions {
                 player.getLocation().getZ()
         );
         AirDrop.spawnDrop(loc);
-        player.sendMessage(DreamAddons.color(config.getString("general.prefix") + config.getString("spawn-message")));
+        player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("general.prefix") + DreamAddons.getInstance().getLanguageConfig().getString("spawn-message")));
     }
 
     public static void listAirDrop(Player player){
         player.sendMessage(DreamAddons.color(config.getString("list-message")));
         for(String str : DreamAddons.getSpawns().keySet()){
-            String message = config.getString("list-spawn-message");
+            String message = DreamAddons.getInstance().getLanguageConfig().getString("list-spawn-message");
             message = message.replace("%spawn-id%", str);
             player.sendMessage(DreamAddons.color(message));
         }
     }
 
     public static void helpMessage(Player player){
-        List<String> message = config.getStringList("help-message");
+        List<String> message = DreamAddons.getInstance().getLanguageConfig().getStringList("help-message");
         for (String str : message) {
             player.sendMessage(DreamAddons.color(str));
         }
@@ -55,7 +55,7 @@ public class Functions {
     public static void createAirDrop(Player player, String[] args){
         for(String key : config.getConfigurationSection("locations").getKeys(false)){
             if(args[1].equalsIgnoreCase(key)){
-                player.sendMessage(DreamAddons.color(config.getString("general.prefix") + config.getString("spawn-already-exist")));
+                player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("general.prefix") + DreamAddons.getInstance().getLanguageConfig().getString("spawn-already-exist")));
                 return;
             }
         }
@@ -73,7 +73,7 @@ public class Functions {
         config.set("locations." + args[1] + ".y", player.getLocation().getY());
         config.set("locations." + args[1] + ".z", player.getLocation().getZ());
         DreamAddons.getInstance().saveConfig();
-        player.sendMessage(DreamAddons.color(config.getString("general.prefix") + config.getString("spawn-added")));
+        player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("general.prefix") + DreamAddons.getInstance().getLanguageConfig().getString("spawn-added")));
     }
 
     public static void executeCommand(Player player){
@@ -126,8 +126,8 @@ public class Functions {
         setFragments(player, current + amount);
     }
 
-    public static void constructLore(String path, ItemMeta item){
-        List<String> loreList = config.getStringList(path);
+    public static void constructLore(FileConfiguration configSave, String path, ItemMeta item){
+        List<String> loreList = configSave.getStringList(path);
         ArrayList<String> lore = new ArrayList<>();
         for(String str : loreList){lore.add(DreamAddons.color(str));}
         item.setLore(lore);

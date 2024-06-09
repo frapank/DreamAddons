@@ -31,12 +31,12 @@ public class FragmentMainCommand implements CommandExecutor {
 
             if (args.length == 0) {
                 if (sender.hasPermission("dream.fragment.admin")) {
-                    List<String> message = plugin.getConfig().getStringList("general.admin-message");
+                    List<String> message = DreamAddons.getInstance().getLanguageConfig().getStringList("general.admin-message");
                     for (String s : message) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
                     }
                 } else {
-                    List<String> message = plugin.getConfig().getStringList("general.default-message");
+                    List<String> message = DreamAddons.getInstance().getLanguageConfig().getStringList("general.default-message");
                     for (String s : message) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
                     }
@@ -53,21 +53,21 @@ public class FragmentMainCommand implements CommandExecutor {
 
                 if(args[0].equalsIgnoreCase("self") && player.hasPermission("dream.fragment.admin")){
                     player.getInventory().addItem(Fragment.giveFragment(1));
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragment-item-given")));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.fragment-item-given")));
                     return true;
                 } else {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.no-permission")));
                 }
                 if (targetPlayer != null) {
                     int fragments = Functions.getFragments(targetPlayer);
 
                     if (targetPlayer.equals(sender)) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-fragments-self")).replace("%amount%", fragments + ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.player-fragments-self")).replace("%amount%", fragments + ""));
                     } else {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-fragments")).replace("%amount%", fragments + "").replace("%player%", targetName));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.player-fragments")).replace("%amount%", fragments + "").replace("%player%", targetName));
                     }
                 } else {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-not-found")).replace("player%", targetName));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.player-not-found")).replace("player%", targetName));
                 }
             }
 
@@ -79,15 +79,15 @@ public class FragmentMainCommand implements CommandExecutor {
 
                         if (targetPlayer != null) {
                             Functions.setFragments(targetPlayer, 0);
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragments-resetted").replace("%player%", targetName)));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.fragments-resetted").replace("%player%", targetName)));
                         } else {
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.player-not-found")).replace("player%", targetName));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.player-not-found")).replace("player%", targetName));
                         }
                     } else {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.no-permission")));
                     }
                 } else {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.no-permission")));
                 }
             }
 
@@ -103,23 +103,23 @@ public class FragmentMainCommand implements CommandExecutor {
                             try {
                                 amount = Integer.parseInt(args[2]);
                             } catch (NumberFormatException e) {
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.invalid-amount")));
+                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.invalid-amount")));
                                 plugin.getLogger().warning("Invalid amount provided: " + args[2]);
                                 return true;
                             }
 
                             Functions.setFragments(targetPlayer, amount);
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.fragments-setted").replace("%player%", targetName).replace("%amount%", amount + "")));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.fragments-setted").replace("%player%", targetName).replace("%amount%", amount + "")));
                         } else {
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.no-permission")));
                         }
                     } else {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.no-permission")));
                     }
                 }
 
                 if (args.length > 3) {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + plugin.getConfig().getString("messages.no-permission")));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + DreamAddons.getInstance().getLanguageConfig().getString("messages.no-permission")));
                 }
 
             }

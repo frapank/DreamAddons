@@ -55,7 +55,7 @@ public class AirDropCommand implements CommandExecutor {
                 return true;
             }
 
-            player.sendMessage(DreamAddons.color(config.getString("no-perm")));
+            player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("no-perm")));
             return true;
         }
 

@@ -58,7 +58,7 @@ public class ItemMarket {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(player.getName());
-        Functions.constructLore("main-gui.head-player.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta);
 
         skull.setItemMeta(meta);
 
@@ -68,8 +68,8 @@ public class ItemMarket {
     private static ItemStack axe(){
         ItemStack item = new ItemStack(Material.OBSIDIAN);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(DreamAddons.color(config.getString("item-shop.axe.display-name")));
-        Functions.constructLore("item-shop.axe.lore", meta);
+        meta.setDisplayName(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("item-shop.axe.display-name")));
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "item-shop.axe.lore", meta);
         item.setItemMeta(meta);
         return item;
     }
@@ -77,8 +77,8 @@ public class ItemMarket {
     private static ItemStack obsidian(){
         ItemStack item = new ItemStack(Material.DIAMOND_AXE);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(DreamAddons.color(config.getString("item-shop.obsidian.display-name")));
-        Functions.constructLore("item-shop.obsidian.lore", meta);
+        meta.setDisplayName(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("item-shop.obsidian.display-name")));
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "item-shop.obsidian.lore", meta);
         item.setItemMeta(meta);
         return item;
     }
@@ -86,8 +86,8 @@ public class ItemMarket {
     private static ItemStack cobweb(){
         ItemStack item = new ItemStack(Material.WEB);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(DreamAddons.color(config.getString("item-shop.cobweb.display-name")));
-        Functions.constructLore("item-shop.cobweb.lore", meta);
+        meta.setDisplayName(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("item-shop.cobweb.display-name")));
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "item-shop.cobweb.lore", meta);
         item.setItemMeta(meta);
         return item;
     }
