@@ -139,11 +139,14 @@ main-gui:
       - "&8» &eClicca per aprire"
   head-player:
     lore:
-      - " "
-      - "&8| &7Info "
-      - "&8| &7"
-      - "&8| &7"
-      - "&8| &7"
+      - ''
+      - '&5&lSTATISTICHE KITPVP:'
+      - ''
+      - '&8» &7Uccisioni: &d%dreamkitbeta_kills%'
+      - '&8» &7Morti: &d%dreamkitbeta_deaths%'
+      - '&8» &7Streak: &d%dreamkitbeta_streak%'
+      - ''
+      - '&7Possiedi: &e%vault_eco_balance_formatted%€'
 
 critical-boost:
   display-name: "&cCritical Boost"

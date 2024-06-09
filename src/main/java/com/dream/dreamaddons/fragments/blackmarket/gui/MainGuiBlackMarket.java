@@ -22,15 +22,23 @@ public class MainGuiBlackMarket {
 
 
     public static void openGui(Player player){
-        ItemStack lightGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.SILVER.getData());
-        ItemStack darkGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
-        Inventory gui = Bukkit.createInventory(player, 36, "Black Market");
+        ItemStack lightGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
+        ItemMeta lightMeta = lightGrayGlassPane.getItemMeta();
+        lightMeta.setDisplayName(" ");
+        lightGrayGlassPane.setItemMeta(lightMeta);
 
-        gui.setItem(11, new ItemStack(itemShop()));
-        gui.setItem(13, new ItemStack(kitShop()));
-        gui.setItem(15, new ItemStack(perkShop()));
+        ItemStack darkGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getData());
+        ItemMeta grayMeta = darkGrayGlassPane.getItemMeta();
+        grayMeta.setDisplayName(" ");
+        darkGrayGlassPane.setItemMeta(grayMeta);
 
-        gui.setItem(31, new ItemStack(playerHead(player)));
+        Inventory gui = Bukkit.createInventory(player, 36, DreamAddons.color("            &e✦ &0&lGENERALE &e✦"));
+
+        gui.setItem(11, itemShop());
+        gui.setItem(13, kitShop());
+        gui.setItem(15, perkShop());
+
+        gui.setItem(31, playerHead(player));
 
         for (int slot = 0; slot < 36; slot++) {
             if (gui.getItem(slot) == null) {
@@ -42,15 +50,16 @@ public class MainGuiBlackMarket {
             }
         }
 
-        Functions.openGuiAsync(player, gui);
+        player.openInventory(gui);
     }
 
     private static ItemStack playerHead(Player player){
 
         ItemStack skull = new ItemStack(Material.SKULL_ITEM);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        meta.setDisplayName(DreamAddons.color("&e&l" + player.getName()));
         meta.setOwner(player.getName());
-        Functions.constructLore("main-gui.head-player", meta);
+        Functions.constructLore("main-gui.head-player.lore", meta);
 
         skull.setItemMeta(meta);
 

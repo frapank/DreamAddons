@@ -133,9 +133,4 @@ public class Functions {
         item.setLore(lore);
     }
 
-    public static void openGuiAsync(Player player, Inventory gui){
-        DreamAddons.getInstance().getServer().getScheduler().scheduleSyncDelayedTask(DreamAddons.getInstance(), () -> {
-            Bukkit.getPlayer("NomeGiocatore").openInventory(gui);
-        }, 20L);
-    }
 }

@@ -4,6 +4,7 @@ package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.fragments.blackmarket.PerkActivator;
 import com.dream.dreamaddons.fragments.blackmarket.gui.ItemMarket;
+import com.dream.dreamaddons.fragments.blackmarket.gui.MainGuiBlackMarket;
 import com.dream.dreamaddons.fragments.blackmarket.gui.PerkMarket;
 import com.dream.dreamaddons.utils.Functions;
 import org.bukkit.ChatColor;
@@ -22,8 +23,8 @@ public class ClickListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) {
 
-        if (event.getInventory().getName().equalsIgnoreCase("Black Market")) {
-
+        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("            &e✦ &0&lGENERALE &e✦"))) {
+            event.setCancelled(true);
             ItemStack clickedItem = event.getCurrentItem();
 
             if (clickedItem != null && clickedItem.hasItemMeta()) {
@@ -32,35 +33,60 @@ public class ClickListener implements Listener {
                 if (meta != null && meta.hasDisplayName()) {
                     String displayName = ChatColor.stripColor(meta.getDisplayName());
 
-                    if (displayName.equalsIgnoreCase("Item Shop")) {
-                        ItemMarket.openGui((Player) event.getWhoClicked());
-                        event.setCancelled(true);
-                        return;
+                    switch (displayName){
+                        case "PERK SHOP":
+                            PerkMarket.openGui((Player) event.getWhoClicked());
+                            return;
+                        case "ITEM SHOP":
+                            ItemMarket.openGui((Player) event.getWhoClicked());
+                            return;
                     }
-
-                    if (displayName.equalsIgnoreCase("Perk Shop")) {
-                        PerkMarket.openGui((Player) event.getWhoClicked());
-                        event.setCancelled(true);
-                        return;
-                    }
-
                 }
             }
-
-            event.setCancelled(true);
         }
 
-        if (event.getInventory().getName().equalsIgnoreCase("Oggetti speciali")) {
+        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("            &e✦ &0&lOGGETTI &e✦"))) {
 
             ItemStack clickedItem = event.getCurrentItem();
+            event.setCancelled(true);
 
             if (clickedItem != null && clickedItem.hasItemMeta()) {
                 ItemMeta meta = clickedItem.getItemMeta();
 
                 if (meta != null && meta.hasDisplayName()) {
-                    String displayName = ChatColor.stripColor(meta.getDisplayName());
+
                     Player player = (Player) event.getWhoClicked();
-                    if (displayName.equalsIgnoreCase(config.getString("item-shop.axe.display-name"))) {
+                    String displayName = ChatColor.stripColor(meta.getDisplayName());
+
+                    String cobweb = ChatColor.stripColor(config.getString("item-shop.cobweb.display-name"));
+                    String obsidian = ChatColor.stripColor(config.getString("item-shop.obsidian.display-name"));
+                    String axe = ChatColor.stripColor(config.getString("item-shop.axe.display-name"));
+
+                    if(displayName.equalsIgnoreCase(cobweb)) {
+                        if (Functions.getFragments(player) >= 9) {
+                            Functions.setFragments(player, Functions.getFragments(player) - 9);
+                            player.getInventory().addItem(new ItemStack(Material.WEB, 5));
+                            player.sendMessage(DreamAddons.color("&eHai aquistato delle ragnatele"));
+                            event.setCancelled(true);
+                            return;
+                        }
+                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
+                        event.setCancelled(true);
+                        return;
+                    }
+                    if(displayName.equalsIgnoreCase(obsidian)) {
+                        if (Functions.getFragments(player) >= 7) {
+                            Functions.setFragments(player, Functions.getFragments(player) - 7);
+                            player.getInventory().addItem(new ItemStack(Material.OBSIDIAN, 8));
+                            player.sendMessage(DreamAddons.color("&eHai aquistato dell'ossidiana"));
+                            event.setCancelled(true);
+                            return;
+                        }
+                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
+                        event.setCancelled(true);
+                        return;
+                    }
+                    if(displayName.equalsIgnoreCase(axe)) {
                         if(Functions.getFragments(player) >= 5){
                             Functions.setFragments(player, Functions.getFragments(player) - 5);
                             player.getInventory().addItem(new ItemStack(Material.DIAMOND_AXE));
@@ -72,71 +98,41 @@ public class ClickListener implements Listener {
                         event.setCancelled(true);
                         return;
                     }
-
-                    if (displayName.equalsIgnoreCase("item-shop.obsidian.display-name")) {
-                        if(Functions.getFragments(player) >= 7){
-                            Functions.setFragments(player, Functions.getFragments(player) - 7);
-                            player.getInventory().addItem(new ItemStack(Material.OBSIDIAN, 8));
-                            player.sendMessage(DreamAddons.color("&eHai aquistato dell'ossidiana"));
-                            event.setCancelled(true);
-                            return;
-                        }
-                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
-                        event.setCancelled(true);
-                        return;
-                    }
-
-                    if (displayName.equalsIgnoreCase("item-shop.cobweb.display-name")) {
-                        if(Functions.getFragments(player) >= 9){
-                            Functions.setFragments(player, Functions.getFragments(player) - 9);
-                            player.getInventory().addItem(new ItemStack(Material.WEB, 5));
-                            player.sendMessage(DreamAddons.color("&eHai aquistato delle ragnatele"));
-                            event.setCancelled(true);
-                            return;
-                        }
-                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
-                        event.setCancelled(true);
+                    if(displayName.equalsIgnoreCase("« Torna indietro!")) {
+                        MainGuiBlackMarket.openGui((Player) event.getWhoClicked());
                         return;
                     }
 
                 }
             }
-
-            event.setCancelled(true);
         }
 
-        if (event.getInventory().getName().equalsIgnoreCase("Perk Market")) {
+        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("      &e✦ &0&lPOTENZIAMENTI &e✦"))) {
 
             ItemStack clickedItem = event.getCurrentItem();
-
+            event.setCancelled(true);
             if (clickedItem != null && clickedItem.hasItemMeta()) {
                 ItemMeta meta = clickedItem.getItemMeta();
 
                 if (meta != null && meta.hasDisplayName()) {
                     String displayName = ChatColor.stripColor(meta.getDisplayName());
 
-                    if (displayName.equalsIgnoreCase("KEEP INVENTORY")) {
-                        PerkActivator.activateKeepInventory((Player) event.getWhoClicked());
-                        event.setCancelled(true);
-                        return;
-                    }
-
-                    if (displayName.equalsIgnoreCase("BOOST MONEY")) {
-                        PerkActivator.activateMoneyBoost((Player) event.getWhoClicked());
-                        event.setCancelled(true);
-                        return;
-                    }
-
-                    if (displayName.equalsIgnoreCase("CRITICAL BOOST")) {
-                        PerkActivator.activateCriticalBoost((Player) event.getWhoClicked());
-                        event.setCancelled(true);
-                        return;
+                    switch (displayName){
+                        case "CRITICAL BOOST":
+                            PerkActivator.activateCriticalBoost((Player) event.getWhoClicked());
+                            return;
+                        case "BOOST MONEY":
+                            PerkActivator.activateMoneyBoost((Player) event.getWhoClicked());
+                            return;
+                        case "KEEP INVENTORY":
+                            PerkActivator.activateKeepInventory((Player) event.getWhoClicked());
+                            return;
+                        case "« Torna indietro!":
+                            MainGuiBlackMarket.openGui((Player) event.getWhoClicked());
+                            return;
                     }
                 }
             }
-
-            // Attiva la non si sa ancora e rimuovi i frammenti
-            event.setCancelled(true);
         }
     }
 }

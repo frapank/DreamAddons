@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
@@ -20,15 +21,28 @@ public class PerkMarket {
     /* Gui */
     public static void openGui(Player player){
 
-        ItemStack lightGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.SILVER.getData());
-        ItemStack darkGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
-        Inventory gui = Bukkit.createInventory(player,27, "Perk Market");
+        ItemStack lightGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getData());
+        ItemMeta lightMeta = lightGrayGlassPane.getItemMeta();
+        lightMeta.setDisplayName(" ");
+        lightGrayGlassPane.setItemMeta(lightMeta);
 
-        gui.setItem(10, new ItemStack(keepInventoryItemStack()));
-        gui.setItem(13, new ItemStack(doubleMoneyItemStack()));
-        gui.setItem(16, new ItemStack(criticalBoost()));
+        ItemStack backGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.RED.getData());
+        ItemMeta bacMeta = backGlassPane.getItemMeta();
+        bacMeta.setDisplayName(DreamAddons.color("&c« &7Torna indietro!"));
+        backGlassPane.setItemMeta(bacMeta);
 
-        gui.setItem(31, new ItemStack(playerHead(player)));
+        ItemStack darkGrayGlassPane = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getData());
+        ItemMeta grayMeta = darkGrayGlassPane.getItemMeta();
+        grayMeta.setDisplayName(" ");
+        darkGrayGlassPane.setItemMeta(grayMeta);
+        Inventory gui = Bukkit.createInventory(player,36, DreamAddons.color("      &e✦ &0&lPOTENZIAMENTI &e✦"));
+
+        gui.setItem(10, keepInventoryItemStack());
+        gui.setItem(13, doubleMoneyItemStack());
+        gui.setItem(16, criticalBoost());
+        gui.setItem(35, backGlassPane);
+
+        gui.setItem(31, playerHead(player));
 
         for (int slot = 0; slot < 36; slot++) {
             if (gui.getItem(slot) == null) {
@@ -40,7 +54,7 @@ public class PerkMarket {
             }
         }
 
-        Functions.openGuiAsync(player, gui);
+        player.openInventory(gui);
     }
 
     private static ItemStack playerHead(Player player){
@@ -48,7 +62,7 @@ public class PerkMarket {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(player.getName());
-        Functions.constructLore("main-gui.head-player", meta);
+        Functions.constructLore("main-gui.head-player.lore", meta);
 
         skull.setItemMeta(meta);
 
