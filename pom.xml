@@ -6,7 +6,7 @@
 
   <groupId>com.dream.dreamaddons</groupId>
   <artifactId>DreamAddons</artifactId>
-  <version>3.3</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
   <name>DreamAddons</name>

@@ -63,6 +63,8 @@ public final class DreamAddons extends JavaPlugin {
         saveDefaultConfig();
 
         /* Initialize */
+        createFragmentsFile();
+        createLanguageFile();
         instance = this;
         luckyFunctions = new LuckyFunctions();
         spawns = new HashMap<>();
@@ -73,8 +75,6 @@ public final class DreamAddons extends JavaPlugin {
 
         /* Other */
         Functions.removeAllArmorStand();
-        createFragmentsFile();
-        createLanguageFile();
 
         /* Commands && events */
         registerCommands();

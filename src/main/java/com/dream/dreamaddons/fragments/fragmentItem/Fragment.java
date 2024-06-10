@@ -38,12 +38,12 @@ public class Fragment {
             e.printStackTrace();
         }
 
-        String displayName = DreamAddons.getInstance().getConfig().getString("fragments.display-name");
+        String displayName = DreamAddons.getInstance().getLanguageConfig().getString("fragments.display-name");
         if (displayName != null) {
             meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
         }
 
-        List<String> lore = DreamAddons.getInstance().getConfig().getStringList("fragments.lore");
+        List<String> lore = DreamAddons.getInstance().getLanguageConfig().getStringList("fragments.lore");
         if (lore != null && !lore.isEmpty()) {
             for (int i = 0; i < lore.size(); i++) {
                 lore.set(i, ChatColor.translateAlternateColorCodes('&', lore.get(i)));
