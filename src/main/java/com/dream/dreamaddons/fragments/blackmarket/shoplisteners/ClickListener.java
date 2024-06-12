@@ -62,6 +62,7 @@ public class ClickListener implements Listener {
                     String obsidian = ChatColor.stripColor(config.getString("item-shop.obsidian.display-name"));
                     String axe = ChatColor.stripColor(config.getString("item-shop.axe.display-name"));
 
+                    player.sendMessage("Debug: " + cobweb + ", " + obsidian + ", " + axe + " ->" + displayName);
                     if(displayName.equalsIgnoreCase(cobweb)) {
                         if (Functions.getFragments(player) >= 9) {
                             Functions.setFragments(player, Functions.getFragments(player) - 9);

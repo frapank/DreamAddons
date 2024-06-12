@@ -34,20 +34,22 @@ import java.util.logging.Level;
 public final class DreamAddons extends JavaPlugin {
 
     @Getter
-    private static DreamAddons instance;  // Singleton instance
-    @Getter
-    private FileConfiguration fragmentsConfig;
-    @Getter
-    private FileConfiguration languageConfig;
+    private static DreamAddons instance;
     @Getter
     private static HashMap<String, Location> spawns;
     @Getter
     private static LuckyFunctions luckyFunctions;
-    private AirDropSpawnerLoader configManager;
+    private AirDropSpawnerLoader airDropSpawnerLoader;
     private BukkitTask spawnerTask;
+    public String prefix;
+
+    /* Config dec. */
+    @Getter
+    private FileConfiguration fragmentsConfig;
+    @Getter
+    private FileConfiguration languageConfig;
     private File fragmentsFile;
     private File languageFile;
-    public String prefix;
 
 
     @Override
@@ -60,18 +62,22 @@ public final class DreamAddons extends JavaPlugin {
         getLogger().warning("                          ");
         getLogger().warning("    By Gourmet/Fiscalo    ");
         getLogger().warning("<------------------------>");
+
+        /* Conifg */
         saveDefaultConfig();
+        createLanguageFile();
+        createFragmentsFile();
+        saveLanguageConfig();
+        saveFragmentsConfig();
+        this.prefix = "&f&lDREAM&9&lADDONS &7»";
 
         /* Initialize */
-        createFragmentsFile();
-        createLanguageFile();
         instance = this;
         luckyFunctions = new LuckyFunctions();
         spawns = new HashMap<>();
-        configManager = new AirDropSpawnerLoader();
-        spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
-        instance = this;
-        prefix = this.getLanguageConfig().getString("general.prefix");
+        this.airDropSpawnerLoader = new AirDropSpawnerLoader(this);
+        this.spawnerTask = getServer().getScheduler().runTaskTimer(this, new SpawnTask(), 0, 20 * 60 * getConfig().getInt("spawn-time"));
+
 
         /* Other */
         Functions.removeAllArmorStand();
@@ -151,6 +157,7 @@ public final class DreamAddons extends JavaPlugin {
             getLogger().log(Level.SEVERE, "Could not save language.yml", e);
         }
     }
+
 
 
 }

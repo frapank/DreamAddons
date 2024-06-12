@@ -4,7 +4,9 @@ import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.fragments.blackmarket.gui.MainGuiBlackMarket;
 import com.dream.dreamaddons.fragments.blackmarket.gui.PerkMarket;
 import com.dream.dreamaddons.utils.Functions;
+import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,6 +21,7 @@ public class CommandBlackMarketGui implements CommandExecutor {
 
             Player player = (Player) commandSender;
             if(player.hasPermission("dream.negozio")){
+                player.playSound(player.getLocation(), Sound.ITEM_BREAK, 1.0f, 1.0f);
                 MainGuiBlackMarket.openGui(player);
             }
             return true;

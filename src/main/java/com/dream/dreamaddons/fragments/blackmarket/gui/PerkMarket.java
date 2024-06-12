@@ -37,9 +37,9 @@ public class PerkMarket {
         darkGrayGlassPane.setItemMeta(grayMeta);
         Inventory gui = Bukkit.createInventory(player,36, DreamAddons.color("      &e✦ &0&lPOTENZIAMENTI &e✦"));
 
-        gui.setItem(10, keepInventoryItemStack());
+        gui.setItem(11, keepInventoryItemStack());
         gui.setItem(13, doubleMoneyItemStack());
-        gui.setItem(16, criticalBoost());
+        gui.setItem(15, criticalBoost());
         gui.setItem(35, backGlassPane);
 
         gui.setItem(31, playerHead(player));

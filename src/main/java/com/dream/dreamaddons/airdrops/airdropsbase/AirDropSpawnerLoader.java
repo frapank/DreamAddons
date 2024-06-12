@@ -8,23 +8,20 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class AirDropSpawnerLoader {
 
-    private static FileConfiguration config;
-
     /* Setup config spawners */
-    public AirDropSpawnerLoader(){
+    public AirDropSpawnerLoader(DreamAddons dreamAddons){
 
-        config = DreamAddons.getInstance().getConfig();
-        ConfigurationSection locationsSection = config.getConfigurationSection("locations");
+        ConfigurationSection locationsSection =  dreamAddons.getConfig().getConfigurationSection("locations");
 
         for(String key : locationsSection.getKeys(false)){
 
-            ConfigurationSection newSection = config.getConfigurationSection("locations." + key);
+            ConfigurationSection newSection =  dreamAddons.getConfig().getConfigurationSection("locations." + key);
             int x = newSection.getInt("x");
             int y = newSection.getInt("y");
             int z = newSection.getInt("z");
 
-            Location location = new Location(Bukkit.getWorld(config.getString("world")), x, y, z);
-            DreamAddons.getInstance().getLogger().warning("Aggiunta una nuova location: " + key);
+            Location location = new Location(Bukkit.getWorld( dreamAddons.getConfig().getString("world")), x, y, z);
+            dreamAddons.getLogger().warning("Aggiunta una nuova location: " + key);
             DreamAddons.getSpawns().put(key, location);
         }
 
