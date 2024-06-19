@@ -2,9 +2,12 @@ package com.dream.dreamaddons.airdrops.commands;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
+import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 public class AirDropCommand implements CommandExecutor {
@@ -46,13 +49,31 @@ public class AirDropCommand implements CommandExecutor {
                 }
 
                 /* Args = 2 */
-                if (args.length == 2 && args[0].equalsIgnoreCase("create")) {
-                    Functions.createAirDrop(player, args);
+                if (args.length == 2) {
+                    switch (args[0]){
+                        case "create":
+                            Functions.createAirDrop(player, args);
+                            return true;
+                    }
+                }
+
+                if(args.length == 2 && args[0].equalsIgnoreCase("debug") && args[1].equalsIgnoreCase("remove")){
+                    Location playerLocation = player.getLocation();
+                    double radius = 10.0;
+
+                    for (Entity entity : player.getWorld().getEntities()) {
+                        if (entity instanceof ArmorStand) {
+                            ArmorStand armorStand = (ArmorStand) entity;
+                            if (armorStand.getLocation().distance(playerLocation) <= radius) {
+                                armorStand.remove();
+                            }
+                        }
+                    }
+
+                    player.sendMessage("Tutti gli armor stand nel raggio di " + radius + " blocchi sono stati rimossi");
                     return true;
                 }
 
-                Functions.helpMessage(player);
-                return true;
             }
 
             player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("no-perm")));
@@ -63,4 +84,5 @@ public class AirDropCommand implements CommandExecutor {
 
         return false;
     }
+
 }
