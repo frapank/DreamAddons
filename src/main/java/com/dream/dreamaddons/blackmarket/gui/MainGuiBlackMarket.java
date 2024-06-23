@@ -33,7 +33,7 @@ public class MainGuiBlackMarket {
         Inventory gui = Bukkit.createInventory(player, 36, DreamAddons.color("            &e✦ &0&lGENERALE &e✦"));
 
         gui.setItem(11, itemShop());
-        gui.setItem(13, kitShop());
+        gui.setItem(13, keyShop());
         gui.setItem(15, perkShop());
 
         gui.setItem(31, playerHead(player));
@@ -110,12 +110,12 @@ public class MainGuiBlackMarket {
         return skull;
     }
 
-    private static ItemStack kitShop(){
+    private static ItemStack keyShop(){
 
         ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), "");
-        String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWNjZTgwMjQ2NzRiYTk0OGYzMWM0NjNjYmY5NzFiNDk0NmE1NGUzMjMxNDVmYWY0NTQ3YTYyNDJkY2Y2YTFjOCJ9fX0=";
+        String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDliMjk4M2MwMWI4ZGE3ZGMxYzBmMTJkMDJjNGFiMjBjZDhlNjg3NWU4ZGY2OWVhZTJhODY3YmFlZTYyMzZkNCJ9fX0=";
         profile.getProperties().put("textures", new Property("textures", value));
 
         try {
@@ -127,7 +127,7 @@ public class MainGuiBlackMarket {
         }
 
         Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.kit-shop.lore", meta);
-        meta.setDisplayName(DreamAddons.color("&c&lCOMING SOON..."));
+        meta.setDisplayName(DreamAddons.color("&6&lKEY SHOP"));
 
         skull.setItemMeta(meta);
         return skull;

@@ -51,18 +51,6 @@ public class GoldenHeadListener implements Listener {
         }
     }
 
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent event) {
-        Player player = event.getPlayer();
-        Material block = event.getBlock().getType();
-        if (block.equals(Material.SKULL_ITEM)) {
-            Functions.addFragments(player, player.getItemInHand().getAmount());
-            player.getInventory().removeItem(player.getItemInHand());
-            if(!player.hasPermission("dream.fragment.placefragment")){
-                event.setCancelled(true);
-            }
-        }
-    }
 
     public void giveEffect(Player player){
         try {
@@ -70,16 +58,20 @@ public class GoldenHeadListener implements Listener {
             int absorptionDuration = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.absorptionDuration");
             int slowDuration = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.slowDuration");
             int blindDuration = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.blindDuration");
+            int defenceDuration = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.defenceDuration");
 
             int regenerationLevel = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.regenerationLevel");
             int slowLevel = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.slowLevel");
             int absorptionLevel = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.absorptionLevel");
             int blindLevel = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.blindLevel");
+            int defenceLevel = DreamAddons.getInstance().getConfig().getInt("lunar-fragment.defenceLevel");
 
             player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, regenerationDuration, regenerationLevel));
             player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, absorptionDuration, absorptionLevel));
             player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, slowDuration, slowLevel));
             player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, blindDuration, blindLevel));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, defenceDuration, defenceLevel));
+
         }catch (Exception e){
             DreamAddons.getInstance().getLogger().warning("Errore nella funzione giveEffect: " + e);
         }

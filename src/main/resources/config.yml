@@ -40,15 +40,17 @@ airdebug-period: 5
 
 #LunarHead
 lunar-fragment:
-  regenerationDuration: 220
-  absorptionDuration: 2100
+  regenerationDuration: 190
+  absorptionDuration: 1600
   slowDuration: 200
-  blindDuration: 120
+  blindDuration: 190
+  defenceDuration: 120
 
-  regenerationLevel: 3
+  regenerationLevel: 4
   slowLevel: 1
-  absorptionLevel: 1
-  blindLevel: 1
+  absorptionLevel: 3
+  blindLevel: 2
+  defenceLevel: 3
 
 #Locations spawners
 locations:

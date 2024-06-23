@@ -94,7 +94,7 @@ main-gui:
     display-name: "&cPerk item"
     lore:
       - " "
-      - "&8| &7Aquista i kit "
+      - "&8| &7Aquista le key "
       - "&8| &7riservati ai vip"
       - "&8| &7ma non pensare che"
       - "&8| &7saranno gratis"
@@ -172,3 +172,41 @@ item-shop:
       - "&8| &7ma non ci vedi piú"
       - " "
       - "&8» &e15 frammenti"
+
+key-shop:
+  comune:
+    display-name: "&f&lCHIAVE COMUNE"
+    lore:
+      - " "
+      - "&8| &7Key comune ottenibile"
+      - "&8| &7tramite il Black Market"
+      - "&8| &7o lo shop"
+      - " "
+      - "&8» &e10 frammenti"
+  raro:
+    display-name: "&a&lCHIAVE RARA"
+    lore:
+      - " "
+      - "&8| &7Key rara ottenibile"
+      - "&8| &7tramite il Black Market"
+      - "&8| &7o lo shop"
+      - " "
+      - "&8» &e15 frammenti"
+  epico:
+    display-name: "&d&lCHIAVE EPICA"
+    lore:
+      - " "
+      - "&8| &7Key epica ottenibile"
+      - "&8| &7tramite il Black Market"
+      - "&8| &7o lo shop"
+      - " "
+      - "&8» &e25 frammenti"
+  legendario:
+    display-name: "&6&lCHIAVE LEGGENDARIA"
+    lore:
+      - " "
+      - "&8| &7Key leggendaria ottenibile"
+      - "&8| &7tramite il Black Market"
+      - "&8| &7o lo shop"
+      - " "
+      - "&8» &e35 frammenti"
