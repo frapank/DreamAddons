@@ -1,4 +1,4 @@
-package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
+package com.dream.dreamaddons.blackmarket.shoplisteners;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.NmsUtils;

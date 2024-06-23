@@ -1,14 +1,12 @@
-package com.dream.dreamaddons.fragments.blackmarket.gui;
+package com.dream.dreamaddons.blackmarket.gui;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import net.minecraft.server.v1_8_R3.Slot;
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

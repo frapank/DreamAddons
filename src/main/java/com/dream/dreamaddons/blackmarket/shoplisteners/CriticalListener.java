@@ -1,4 +1,4 @@
-package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
+package com.dream.dreamaddons.blackmarket.shoplisteners;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

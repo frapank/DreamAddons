@@ -30,9 +30,9 @@ public class RightClickClaim implements Listener {
                     DreamAddons.getInstance().getLogger().warning("Config error sound <claim-sound> :" + e);
                 }
 
+                armorStand.remove();
                 Functions.executeCommand(player);
                 NmsUtils.playExplosionEffect(armorStand.getLocation());
-                armorStand.remove();
             }
         }
     }

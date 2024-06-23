@@ -1,13 +1,13 @@
-package com.dream.dreamaddons.fragments.blackmarket.shoplisteners;
+package com.dream.dreamaddons.blackmarket.shoplisteners;
 
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.fragments.blackmarket.PerkActivator;
-import com.dream.dreamaddons.fragments.blackmarket.gui.ItemMarket;
-import com.dream.dreamaddons.fragments.blackmarket.gui.MainGuiBlackMarket;
-import com.dream.dreamaddons.fragments.blackmarket.gui.PerkMarket;
+import com.dream.dreamaddons.blackmarket.PerkActivator;
+import com.dream.dreamaddons.blackmarket.gui.ItemMarket;
+import com.dream.dreamaddons.blackmarket.gui.MainGuiBlackMarket;
+import com.dream.dreamaddons.blackmarket.gui.PerkMarket;
+import com.dream.dreamaddons.goldenhead.GoldenHead;
 import com.dream.dreamaddons.utils.Functions;
-import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -99,6 +99,20 @@ public class ClickListener implements Listener {
                         event.setCancelled(true);
                         return;
                     }
+
+                    if(clickedItem.getType().equals(Material.SKULL_ITEM)) {
+                        if(Functions.getFragments(player) >= 15){
+                            Functions.setFragments(player, Functions.getFragments(player) - 15);
+                            GoldenHead.giveGoldenHead(player);
+                            player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
+                            event.setCancelled(true);
+                            return;
+                        }
+                        player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.no-fragments")));
+                        event.setCancelled(true);
+                        return;
+                    }
+
                     if(displayName.equalsIgnoreCase("« Torna indietro!")) {
                         MainGuiBlackMarket.openGui((Player) event.getWhoClicked());
                         return;

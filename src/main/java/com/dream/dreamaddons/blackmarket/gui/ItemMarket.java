@@ -1,7 +1,9 @@
-package com.dream.dreamaddons.fragments.blackmarket.gui;
+package com.dream.dreamaddons.blackmarket.gui;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -11,6 +13,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+
+import java.lang.reflect.Field;
+import java.util.UUID;
 
 public class ItemMarket {
 
@@ -33,9 +38,10 @@ public class ItemMarket {
 
         Inventory gui = Bukkit.createInventory(player, 36, DreamAddons.color("            &e✦ &0&lOGGETTI &e✦"));
 
-        gui.setItem(11, axe());
-        gui.setItem(13, obsidian());
-        gui.setItem(15, cobweb());
+        gui.setItem(10, axe());
+        gui.setItem(12, obsidian());
+        gui.setItem(14, cobweb());
+        gui.setItem(16, headOP());
 
         gui.setItem(35, backGlassPane);
         gui.setItem(31, playerHead(player));
@@ -91,4 +97,29 @@ public class ItemMarket {
         item.setItemMeta(meta);
         return item;
     }
+
+    private static ItemStack headOP(){
+
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        SkullMeta meta = (SkullMeta) skull.getItemMeta();
+        GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+        String value = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzAwYTFhN2JiMDdmZGI0ZTZhODZlMzQxODE2ZTg4NDNkZGFmN2NmMzcxM2EzNjY2ZDc0YjcyZjk4NjE5ZjA2MyJ9fX0=";
+        profile.getProperties().put("textures", new Property("textures", value));
+
+        try {
+            Field profileField = meta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(meta, profile);
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+            e.printStackTrace();
+        }
+
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "item-shop.goldenapple.lore", meta);
+        meta.setDisplayName(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("item-shop.goldenapple.display-name")));
+
+        skull.setItemMeta(meta);
+
+        return skull;
+    }
+
 }

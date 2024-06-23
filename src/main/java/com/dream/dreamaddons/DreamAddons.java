@@ -5,15 +5,16 @@ import com.dream.dreamaddons.airdrops.airdropsbase.SpawnTask;
 import com.dream.dreamaddons.airdrops.commands.AirDropCommand;
 import com.dream.dreamaddons.airdrops.listeners.RightClickClaim;
 import com.dream.dreamaddons.airdrops.listeners.LeftClickClaim;
-import com.dream.dreamaddons.extra.DamagerIndicator;
+import com.dream.dreamaddons.goldenhead.GoldenHeadListener;
+import com.dream.dreamaddons.utils.DamagerIndicator;
 import com.dream.dreamaddons.fragments.FragmentPlaceHolder;
 import com.dream.dreamaddons.fragments.commands.FragmentMainCommand;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
-import com.dream.dreamaddons.fragments.blackmarket.commandListener.CommandBlackMarketGui;
-import com.dream.dreamaddons.fragments.blackmarket.shoplisteners.ClickListener;
-import com.dream.dreamaddons.fragments.blackmarket.shoplisteners.CriticalListener;
-import com.dream.dreamaddons.fragments.blackmarket.shoplisteners.DeathEvent;
+import com.dream.dreamaddons.blackmarket.commandListener.CommandBlackMarketGui;
+import com.dream.dreamaddons.blackmarket.shoplisteners.ClickListener;
+import com.dream.dreamaddons.blackmarket.shoplisteners.CriticalListener;
+import com.dream.dreamaddons.blackmarket.shoplisteners.DeathEvent;
 import com.dream.dreamaddons.utils.Functions;
 import com.dream.dreamaddons.utils.LuckyFunctions;
 import lombok.Getter;
@@ -122,6 +123,7 @@ public final class DreamAddons extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CriticalListener(), this);
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         getServer().getPluginManager().registerEvents(new DamagerIndicator(), this);
+        getServer().getPluginManager().registerEvents(new GoldenHeadListener(this), this);
     }
     private void registerCommands() {
         this.getCommand("airdrop").setExecutor(new AirDropCommand());

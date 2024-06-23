@@ -1,7 +1,6 @@
-package com.dream.dreamaddons.extra;
+package com.dream.dreamaddons.utils;
 
 import com.dream.dreamaddons.DreamAddons;
-import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

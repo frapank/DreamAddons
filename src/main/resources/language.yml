@@ -164,3 +164,11 @@ item-shop:
       - "&8| &7nemici!"
       - " "
       - "&8» &e9 frammenti"
+  goldenapple:
+    display-name: "&f&lFrammento lunare"
+    lore:
+      - " "
+      - "&8| &7Recuperi vita"
+      - "&8| &7ma non ci vedi piú"
+      - " "
+      - "&8» &e15 frammenti"

@@ -30,13 +30,25 @@ particel-up: "FLAME"
 claim-effect: "SMOKE_NORMAL"
 
 # Gameplay Settings
-command-claim: "give %player% minecraft:apple"
+command-claim: "eco give %player% 500"
 world: "world"
 
 #Advanced
 airdebug-down: 0.6
 airdebug-rotation: 10
 airdebug-period: 5
+
+#LunarHead
+lunar-fragment:
+  regenerationDuration: 220
+  absorptionDuration: 2100
+  slowDuration: 200
+  blindDuration: 120
+
+  regenerationLevel: 3
+  slowLevel: 1
+  absorptionLevel: 1
+  blindLevel: 1
 
 #Locations spawners
 locations:

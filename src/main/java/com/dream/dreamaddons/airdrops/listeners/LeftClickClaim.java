@@ -17,9 +17,9 @@ public class LeftClickClaim implements Listener {
     public void armorStandEvent(PlayerArmorStandManipulateEvent event) {
         ArmorStand armorStand = event.getRightClicked();
         if(armorStand.getCustomName() != null && armorStand.getCustomName().equals(DreamAddons.color(config.getString("name")))){
-            Functions.executeCommand(event.getPlayer());
-            NmsUtils.playExplosionEffect(armorStand.getLocation());
             armorStand.remove();
+            NmsUtils.playExplosionEffect(armorStand.getLocation());
+            Functions.executeCommand(event.getPlayer());
             event.setCancelled(true);
         }
 

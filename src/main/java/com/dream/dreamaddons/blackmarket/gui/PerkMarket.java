@@ -1,4 +1,4 @@
-package com.dream.dreamaddons.fragments.blackmarket.gui;
+package com.dream.dreamaddons.blackmarket.gui;
 
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.utils.Functions;
