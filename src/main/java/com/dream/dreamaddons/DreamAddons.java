@@ -6,6 +6,7 @@ import com.dream.dreamaddons.airdrops.commands.AirDropCommand;
 import com.dream.dreamaddons.airdrops.listeners.RightClickClaim;
 import com.dream.dreamaddons.airdrops.listeners.LeftClickClaim;
 import com.dream.dreamaddons.extra.DamagerIndicator;
+import com.dream.dreamaddons.fragments.FragmentPlaceHolder;
 import com.dream.dreamaddons.fragments.commands.FragmentMainCommand;
 import com.dream.dreamaddons.fragments.listeners.FileListener;
 import com.dream.dreamaddons.fragments.listeners.FragmentListener;
@@ -93,6 +94,13 @@ public final class DreamAddons extends JavaPlugin {
 
         }
 
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new FragmentPlaceHolder().register();
+        } else {
+            getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+
     }
 
     @Override
@@ -157,6 +165,9 @@ public final class DreamAddons extends JavaPlugin {
             getLogger().log(Level.SEVERE, "Could not save language.yml", e);
         }
     }
+
+
+
 
 
 

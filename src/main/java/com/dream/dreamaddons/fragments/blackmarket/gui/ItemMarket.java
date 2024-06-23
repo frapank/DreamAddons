@@ -58,7 +58,7 @@ public class ItemMarket {
         ItemStack skull = new ItemStack(Material.SKULL_ITEM);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setOwner(player.getName());
-        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta, player);
 
         skull.setItemMeta(meta);
 
@@ -66,7 +66,7 @@ public class ItemMarket {
     }
 
     private static ItemStack axe(){
-        ItemStack item = new ItemStack(Material.OBSIDIAN);
+        ItemStack item = new ItemStack(Material.DIAMOND_AXE);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("item-shop.axe.display-name")));
         Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "item-shop.axe.lore", meta);
@@ -75,7 +75,7 @@ public class ItemMarket {
     }
 
     private static ItemStack obsidian(){
-        ItemStack item = new ItemStack(Material.DIAMOND_AXE);
+        ItemStack item = new ItemStack(Material.OBSIDIAN);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("item-shop.obsidian.display-name")));
         Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "item-shop.obsidian.lore", meta);

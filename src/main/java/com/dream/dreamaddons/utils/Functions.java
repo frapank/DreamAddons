@@ -3,6 +3,7 @@ package com.dream.dreamaddons.utils;
 import com.dream.dreamaddons.DreamAddons;
 import com.dream.dreamaddons.airdrops.airdropsbase.AirDrop;
 import com.dream.dreamaddons.fragments.fragmentItem.Fragment;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -129,7 +130,21 @@ public class Functions {
     public static void constructLore(FileConfiguration configSave, String path, ItemMeta item){
         List<String> loreList = configSave.getStringList(path);
         ArrayList<String> lore = new ArrayList<>();
-        for(String str : loreList){lore.add(DreamAddons.color(str));}
+        for(String str : loreList){
+            lore.add(DreamAddons.color(str));
+        }
+        item.setLore(lore);
+    }
+
+    public static void constructLore(FileConfiguration configSave, String path, ItemMeta item, Player player){
+        String text;
+        List<String> loreList = configSave.getStringList(path);
+        ArrayList<String> lore = new ArrayList<>();
+        for(String str : loreList){
+            text = str;
+            text = PlaceholderAPI.setPlaceholders(player, text);
+            lore.add(DreamAddons.color(text));
+        }
         item.setLore(lore);
     }
 

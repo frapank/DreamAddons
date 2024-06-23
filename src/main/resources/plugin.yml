@@ -3,6 +3,8 @@ version: '${project.version}'
 author: Fiscalo
 description: Fragments currency made for DreamNetwork.
 main: com.dream.dreamaddons.DreamAddons
+softdepend: [PlaceholderAPI]
+
 commands:
   frammenti:
     usage: /frammenti

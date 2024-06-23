@@ -7,6 +7,7 @@ import com.dream.dreamaddons.fragments.blackmarket.gui.ItemMarket;
 import com.dream.dreamaddons.fragments.blackmarket.gui.MainGuiBlackMarket;
 import com.dream.dreamaddons.fragments.blackmarket.gui.PerkMarket;
 import com.dream.dreamaddons.utils.Functions;
+import com.dream.dreamaddons.utils.NmsUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -58,44 +59,43 @@ public class ClickListener implements Listener {
                     Player player = (Player) event.getWhoClicked();
                     String displayName = ChatColor.stripColor(meta.getDisplayName());
 
-                    String cobweb = ChatColor.stripColor(config.getString("item-shop.cobweb.display-name"));
-                    String obsidian = ChatColor.stripColor(config.getString("item-shop.obsidian.display-name"));
-                    String axe = ChatColor.stripColor(config.getString("item-shop.axe.display-name"));
 
-                    player.sendMessage("Debug: " + cobweb + ", " + obsidian + ", " + axe + " ->" + displayName);
-                    if(displayName.equalsIgnoreCase(cobweb)) {
+                    if(clickedItem.getType().equals(Material.WEB)) {
                         if (Functions.getFragments(player) >= 9) {
                             Functions.setFragments(player, Functions.getFragments(player) - 9);
                             player.getInventory().addItem(new ItemStack(Material.WEB, 5));
-                            player.sendMessage(DreamAddons.color("&eHai aquistato delle ragnatele"));
+                            player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
                             event.setCancelled(true);
                             return;
                         }
-                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
+                        player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.no-fragments")));
+
                         event.setCancelled(true);
                         return;
                     }
-                    if(displayName.equalsIgnoreCase(obsidian)) {
+                    if(clickedItem.getType().equals(Material.OBSIDIAN)) {
                         if (Functions.getFragments(player) >= 7) {
                             Functions.setFragments(player, Functions.getFragments(player) - 7);
                             player.getInventory().addItem(new ItemStack(Material.OBSIDIAN, 8));
-                            player.sendMessage(DreamAddons.color("&eHai aquistato dell'ossidiana"));
+                            player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
                             event.setCancelled(true);
                             return;
                         }
-                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
+                        player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.no-fragments")));
                         event.setCancelled(true);
+
+
                         return;
                     }
-                    if(displayName.equalsIgnoreCase(axe)) {
+                    if(clickedItem.getType().equals(Material.DIAMOND_AXE)) {
                         if(Functions.getFragments(player) >= 5){
                             Functions.setFragments(player, Functions.getFragments(player) - 5);
                             player.getInventory().addItem(new ItemStack(Material.DIAMOND_AXE));
-                            player.sendMessage(DreamAddons.color("&eHai aquistato un ascia"));
+                            player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
                             event.setCancelled(true);
                             return;
                         }
-                        player.sendMessage(DreamAddons.color("&cNon cai na lira"));
+                        player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.no-fragments")));
                         event.setCancelled(true);
                         return;
                     }

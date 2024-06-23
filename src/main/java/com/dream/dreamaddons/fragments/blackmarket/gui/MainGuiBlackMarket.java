@@ -59,7 +59,7 @@ public class MainGuiBlackMarket {
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         meta.setDisplayName(DreamAddons.color("&e&l" + player.getName()));
         meta.setOwner(player.getName());
-        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta);
+        Functions.constructLore(DreamAddons.getInstance().getLanguageConfig(), "main-gui.head-player.lore", meta, player);
 
         skull.setItemMeta(meta);
 

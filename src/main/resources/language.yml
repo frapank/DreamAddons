@@ -63,7 +63,13 @@ messages:
   invalid-amount: "&cL'importo inserito deve essere un numero intero."
   fragments-redeemed: "&aHai riscattato un frammento."
 
-#Black Market
+#BlackMarket chat
+black-messages:
+  no-fragments: "&cNon cai na lira"
+  yes-fragments: "&eAquisto andato a buon fine"
+  yes-perk: "&eAquisto andato a buon fine"
+
+#BlackMarket gui
 main-gui:
   item-shop:
     display-name: "&cShop item"
@@ -158,4 +164,3 @@ item-shop:
       - "&8| &7nemici!"
       - " "
       - "&8» &e9 frammenti"
-      -
