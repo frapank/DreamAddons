@@ -35,7 +35,7 @@ public class KeyMarket {
         ItemMeta grayMeta = darkGrayGlassPane.getItemMeta();
         grayMeta.setDisplayName(" ");
         darkGrayGlassPane.setItemMeta(grayMeta);
-        Inventory gui = Bukkit.createInventory(player,36, DreamAddons.color("      &e✦ &0&lNEGOZIO KEY &e✦"));
+        Inventory gui = Bukkit.createInventory(player,36, DreamAddons.color("           &e✦ &0&lNEGOZIO KEY &e✦"));
 
         gui.setItem(10, comuneKey());
         gui.setItem(12, rareKey());

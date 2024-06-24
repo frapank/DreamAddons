@@ -30,7 +30,7 @@ public class MainGuiBlackMarket {
         grayMeta.setDisplayName(" ");
         darkGrayGlassPane.setItemMeta(grayMeta);
 
-        Inventory gui = Bukkit.createInventory(player, 36, DreamAddons.color("            &e✦ &0&lGENERALE &e✦"));
+        Inventory gui = Bukkit.createInventory(player, 36, DreamAddons.color("          &e✦ &0&lGENERALE &e✦"));
 
         gui.setItem(11, itemShop());
         gui.setItem(13, keyShop());

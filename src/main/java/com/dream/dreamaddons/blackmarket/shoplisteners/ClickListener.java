@@ -30,7 +30,7 @@ public class ClickListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) {
 
-        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("            &e✦ &0&lGENERALE &e✦"))) {
+        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("          &e✦ &0&lGENERALE &e✦"))) {
             event.setCancelled(true);
             ItemStack clickedItem = event.getCurrentItem();
 
@@ -159,7 +159,7 @@ public class ClickListener implements Listener {
             }
         }
 
-        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("      &e✦ &0&lNEGOZIO KEY &e✦"))) {
+        if (event.getInventory().getName().equalsIgnoreCase(DreamAddons.color("           &e✦ &0&lNEGOZIO KEY &e✦"))) {
 
             ItemStack clickedItem = event.getCurrentItem();
             event.setCancelled(true);
@@ -177,6 +177,7 @@ public class ClickListener implements Listener {
                                 str = str.replace("%player%", player.getName());
                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
                                 player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
+                                Functions.setFragments(player, Functions.getFragments(player) - 10);
                                 event.setCancelled(true);
                                 return;
                             }
@@ -190,6 +191,7 @@ public class ClickListener implements Listener {
                                 str = str.replace("%player%", player.getName());
                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
                                 player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
+                                Functions.setFragments(player, Functions.getFragments(player) - 15);
                                 event.setCancelled(true);
                                 return;
                             }
@@ -202,6 +204,7 @@ public class ClickListener implements Listener {
                                 str = str.replace("%player%", player.getName());
                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
                                 player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
+                                Functions.setFragments(player, Functions.getFragments(player) - 25);
                                 event.setCancelled(true);
                                 return;
                             }
@@ -214,6 +217,7 @@ public class ClickListener implements Listener {
                                 str = str.replace("%player%", player.getName());
                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), str);
                                 player.sendMessage(DreamAddons.color(DreamAddons.getInstance().getLanguageConfig().getString("black-messages.yes-fragments")));
+                                Functions.setFragments(player, Functions.getFragments(player) - 35);
                                 event.setCancelled(true);
                                 return;
                             }

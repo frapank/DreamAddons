@@ -109,7 +109,7 @@ main-gui:
       - '&8» &7Morti: &d%dreamkitbeta_deaths%'
       - '&8» &7Streak: &d%dreamkitbeta_streak%'
       - ''
-      - '&7Possiedi: &e%vault_eco_balance_formatted%€'
+      - '&7Possiedi: &e%dream_fragments% frammenti'
 
 critical-boost:
   display-name: "&cCritical Boost"
